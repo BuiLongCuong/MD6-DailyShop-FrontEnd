@@ -6,7 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Button from "@mui/material/Button";
 
-export default function AddressForm() {
+export default function Register() {
     let myStyle = {
         width: '550px',
         // border: "1px solid black",
