@@ -8,7 +8,6 @@ export default function HomeSimple() {
         <>
             <Header/>
             <Navbar/>
-            <Outlet/>
             <Footer/>
         </>
     )

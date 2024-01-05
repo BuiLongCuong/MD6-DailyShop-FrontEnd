@@ -2,19 +2,23 @@ import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 
 export default function Register() {
     let myStyle = {
         width: '550px',
-        // border: "1px solid black",
+        border: "1px solid black",
         // borderRadius: '20px',
         // backgroundColor: 'white',
         // boxShadow: "10px 10px 10px 0px rgba(0, 0, 0, 0.5)",
         paddingTop: '50px'
     }
+
+    let inputGrid = {
+        marginLeft: '43px'
+    }
+
     let title = {
         fontFamily: 'Helvetica',
         fontSize: '50px',
@@ -29,104 +33,124 @@ export default function Register() {
         minHeight: '100vh',
     }
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        console.log({
+            username: data.get('username'),
+            password: data.get('password'),
+            name: data.get('name'),
+            address: data.get('address'),
+            phoneNumber: data.get('phoneNumber'),
+            dateOfBirth: data.get('dateOfBirth'),
+            email: data.get('email')
+        });
+    };
+
     return (
         <div style={body}>
-        <center>
-        <div style={myStyle}>
-        <React.Fragment>
-            <Typography variant="h6" gutterBottom style={title}>
-                REGISTER
-            </Typography>
-            <Grid container spacing={3}>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="username"
-                        name="username"
-                        label="Tên tài khoản"
-                        fullWidth
-                        autoComplete="given-name"
-                        variant="standard"
-                    />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="password"
-                        name="password"
-                        label="Mật khẩu"
-                        fullWidth
-                        autoComplete="family-name"
-                        variant="standard"
-                        type="password"
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                        required
-                        id="name"
-                        name="name"
-                        label="Họ và tên"
-                        fullWidth
-                        autoComplete="shipping address-line1"
-                        variant="standard"
-                    />
-                </Grid>
-                <Grid item xs={12} >
-                    <TextField
-                        required
-                        id="address"
-                        name="address"
-                        label="Địa chỉ"
-                        fullWidth
-                        autoComplete="shipping address-line2"
-                        variant="standard"
-                    />
-                </Grid>
-                <Grid item xs={12} sm={6} >
-                    <TextField
-                        required
-                        id="phoneNumber"
-                        name="phoneNumber"
-                        label="Số điện thoại"
-                        fullWidth
-                        autoComplete="shipping address-level2"
-                        variant="standard"
-                    />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="dateOfBirth"
-                        name="dateOfBirth"
-                        label="Ngày/tháng/năm sinh"
-                        fullWidth
-                        autoComplete="shipping postal-code"
-                        variant="standard"
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                        required
-                        id="email"
-                        name="email"
-                        label="Email"
-                        fullWidth
-                        variant="standard"
-                    />
-                </Grid>
-                <Button
-                    fullWidth
-                    type="submit"
-                    variant="contained"
-                    sx={{ mt: 3, mb: 2, ml: 21, mr: 21 }}
-                >
-                    Register
-                </Button>
-            </Grid>
-        </React.Fragment>
-        </div>
-        </center>
+            <center>
+                <div style={myStyle}>
+                    <React.Fragment>
+                        <Typography variant="h6" gutterBottom style={title}>
+                            REGISTER
+                        </Typography>
+                        <Box component="form" noValidate onSubmit={handleSubmit}>
+                            <Grid container spacing={3}>
+                                <Grid item xs={12} sm={6}>
+                                    <TextField
+                                        required
+                                        id="username"
+                                        name="username"
+                                        label="Tên tài khoản"
+                                        fullWidth
+                                        autoComplete="given-name"
+                                        variant="standard"
+                                    />
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                    <TextField
+                                        required
+                                        id="password"
+                                        name="password"
+                                        label="Mật khẩu"
+                                        fullWidth
+                                        autoComplete="family-name"
+                                        variant="standard"
+                                        type="password"
+                                    />
+                                </Grid>
+                                <Grid item xs={10} style={inputGrid}>
+                                    <TextField
+                                        required
+                                        id="name"
+                                        name="name"
+                                        label="Họ và tên"
+                                        fullWidth
+                                        autoComplete="shipping address-line1"
+                                        variant="standard"
+                                    />
+                                </Grid>
+                                <Grid item xs={10} style={inputGrid}>
+                                    <TextField
+                                        required
+                                        id="address"
+                                        name="address"
+                                        label="Địa chỉ"
+                                        fullWidth
+                                        autoComplete="shipping address-line2"
+                                        variant="standard"
+                                    />
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                    <TextField
+                                        required
+                                        id="phoneNumber"
+                                        name="phoneNumber"
+                                        label="Số điện thoại"
+                                        fullWidth
+                                        autoComplete="shipping address-level2"
+                                        variant="standard"
+                                    />
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                    <TextField
+                                        required
+                                        id="dateOfBirth"
+                                        name="dateOfBirth"
+                                        label="Ngày/tháng/năm sinh"
+                                        fullWidth
+                                        autoComplete="shipping postal-code"
+                                        variant="standard"
+                                        type="date"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                    />
+                                </Grid>
+                                <Grid item xs={10} style={inputGrid}>
+                                    <TextField
+                                        required
+                                        id="email"
+                                        name="email"
+                                        label="Email"
+                                        fullWidth
+                                        variant="standard"
+                                    />
+                                </Grid>
+                                <Button
+                                    fullWidth
+                                    type="submit"
+                                    variant="contained"
+                                    sx={{mt: 3, mb: 2, ml: 21, mr: 21}}
+                                >
+                                    Register
+                                </Button>
+                            </Grid>
+                        </Box>
+                    </React.Fragment>
+                </div>
+            </center>
         </div>
     );
 }
