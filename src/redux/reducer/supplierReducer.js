@@ -2,10 +2,10 @@ import {createSlice} from "@reduxjs/toolkit";
 import {signIn} from "../service/supplierService";
 
 const initialState = {
-    currentSupplier: JSON.parse(localStorage.getItem("currentSupplier"))
+    currentSupplier:JSON.parse(localStorage.getItem("currentSupplier"))
 }
 const userSlice = createSlice({
-    name: "supplier",
+    name: "supplier/signIn",
     initialState,
     extraReducers: builder => {
         builder.addCase(signIn.fulfilled, (state, {payload}) => {

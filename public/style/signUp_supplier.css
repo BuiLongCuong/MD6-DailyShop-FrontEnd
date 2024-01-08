@@ -1,0 +1,800 @@
+
+.header-signup {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-signup .navbar-signup {
+    height: 100%;
+    width: 1150px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-signup .left-signup {
+    width: 300px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left-signup .logo-signup {
+    width: 140px;
+    height: 100%;
+}
+
+
+.left-signup .text-signup {
+    font-weight: 400;
+    font-size: 24px;
+
+}
+
+.text-signup span {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #222222;
+    margin-left: 25px;
+    padding-top: 20px;
+
+}
+
+.navbar-signup .right-signup {
+    width: 120px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.right span {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #ee4d2d;
+}
+
+.body-signup {
+    height: 600px;
+    width: 100%;
+    display: flex;
+    background-image: url("https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/9ff6617feef144e41cf859e6fc534be2.png");
+    justify-content: center;
+}
+
+.body-signup .content-signup {
+    height: 100%;
+    width: 1040px;
+    display: flex;
+
+}
+
+.content-signup .textarea-signup {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.textarea-signup .form-text-signup {
+    height: 340px;
+    width: 405px;
+}
+
+.form-text-signup .shoppe-signup {
+    width: 405px;
+    height: 35px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 36px;
+    color: #ee4d2d;
+}
+
+.form-text-signup .supplier-signup {
+    width: 405px;
+    height: 90px;
+    font-weight: 500;
+    color: #ee4d2d;
+    margin-top: 4px;
+    font-size: 2.25rem;
+    line-height: 2.625rem;
+    margin-bottom: 10px;
+}
+
+.form-text-signup .internet-signup {
+    width: 405px;
+    height: 50px;
+    display: flex;
+    align-content: center;
+    margin-top: 5px;
+
+}
+
+.internet-signup .logo-signup {
+    width: 55px;
+    height: 100%;
+    flex-shrink: 0;
+    margin-top: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.internet-signup .text-signup {
+    margin-left: 10px;
+    margin-top: 8px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    Color: #ee4d2d
+}
+
+.form-text-signup .trademark-signup {
+    width: 405px;
+    height: 50px;
+    display: flex;
+    margin-top: 10px;
+}
+
+.trademark-signup .logo-signup {
+    width: 55px;
+    height: 78%;
+    flex-shrink: 0;
+    margin-top: 11px;
+    /*background-color: blue;*/
+}
+
+.trademark-signup .text-signup {
+    margin-left: 10px;
+    display: flex;
+    margin-top: 15px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #ee4d2d;
+}
+
+.form-text-signup .vn-signup {
+    width: 405px;
+    height: 50px;
+    display: flex;
+    margin-top: 10px;
+}
+
+.vn-signup .logo-signup {
+    width: 55px;
+    height: 100%;
+    flex-shrink: 0;
+    /*background-color: blue;*/
+}
+
+.vn-signup .text-signup {
+    margin-left: 8px;
+    width: 405px;
+    height: 50px;
+    display: flex;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #ee4d2d;
+}
+
+
+.content-signup .form-login-signup {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-login-signup .register-signup {
+    width: 420px;
+    height: 455px;
+    background-color: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, .14);
+    border-radius: 4px;
+    overflow: hidden;
+
+}
+
+.register-signup .text-signup {
+    margin-left: 15px;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-signup .honey-signup {
+    width: 400px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+
+}
+
+.honey-signup span {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #222222;
+}
+
+.register-signup .form-signup {
+    margin-left: 15px;
+    height: 300px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-signup .form-input-signup {
+    width: 400px;
+    height: 270px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.form-input-signup .input-signup {
+    width: 350px;
+    height: 250px;
+}
+
+.input-signup .form-account-signup {
+    width: 300px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.account-input-signup .account-signup {
+    outline: #222222;
+    width: 140px;
+    height:40px;
+    padding: 0.75rem;
+    outline: none;
+    flex: 1;
+    flex-shrink: 0;
+    filter: none;
+    color: inherit;
+    font: inherit;
+    margin: 0;
+    border: 1px solid rgba(0, 0, 0, .14);
+    border-radius: 2px;
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .02)
+
+}
+
+.password-input-signup .password-signup {
+    width: 140px;
+    height:40px;
+    padding: 0.75rem;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, .14);
+    border-radius: 2px;
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .02);
+    flex: 1;
+    flex-shrink: 0;
+    filter: none;
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+
+.input-signup .form-confirm-signup {
+    width: 350px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+
+}
+
+.confirm-input-signup .confirm-signup {
+    padding-left: 10px;
+    width: 300px;
+    height: 40px;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0;
+    border: 1px solid rgba(0, 0, 0, .14);
+    border-radius: 2px;
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .02);
+}
+
+.input-signup .form-email-signup {
+    width: 350px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.email-input-signup .email-signup {
+    padding-left: 10px;
+    width: 300px;
+    height: 40px;
+    box-sizing: border-box;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, .14);
+    border-radius: 2px;
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .02)
+}
+
+.input-signup .button-signup {
+    width: 300px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.button-signup button {
+    width: 350px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fef2f0;
+    background-color: #f3826c;
+    border: 1px solid rgba(0, 0, 0, .14);
+    border-radius: 2px;
+    box-shadow: inset 0 2px 0 rgba(0, 0, 0, .02)
+
+}
+
+.register-signup .and-signup {
+    margin-top: 5px;
+    width: 300px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.and-signup .hr-signup {
+    width: 150px;
+    height: 30px;
+}
+
+.hr-signup div, .hr1-signup div {
+    margin-top: 15px;
+    border: 1px solid #dbdbdb;
+}
+
+.and-signup .text-signup {
+    width: 80px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-signup .or-signup {
+    padding-bottom: 15px;
+    margin-right: 28px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    Color: #cccccc;
+
+}
+
+.and-signup .hr1-signup {
+    width: 160px;
+    height: 30px;
+}
+
+.google-signup {
+    width: 300px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.google-signup .form-Oauth-signup {
+    margin-top: 10px;
+    width: 180px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-Oauth-signup button {
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, .26);
+    background-color: #fff;
+    color: rgba(0, 0, 0, .87);
+    padding: 0 2px;
+    border-radius: 2px;
+    font-size: .875rem;
+}
+button span{
+    margin-left: 5px;
+}
+
+/*.input .security{*/
+/*    margin-top: 5px;*/
+/*    width: 300px;*/
+/*    height: 50px;*/
+/*    display: flex;*/
+/*    align-items: flex-end;*/
+
+/*}*/
+/*.security .text{*/
+/*    width: 270px;*/
+/*    height: 50px;*/
+/*    background-color: blue;*/
+/*}*/
+/*.text .th{*/
+/*    width: 270px;*/
+/*    height: 50%;*/
+/*    background-color: red;*/
+/*}*/
+/*.text .td{*/
+/*    width: 270px;*/
+/*    height: 50%;*/
+/*    background-color: yellow;*/
+/*}*/
+
+.footer-signup {
+    height: 550px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-signup .mkt-signup {
+    width: 940px;
+    height: 530px;
+
+}
+
+.mkt-signup .daily-signup {
+    width: 100%;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.daily-signup .header-signup {
+    width: 430px;
+    height: 72px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 36px;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.mkt-signup .body-signup {
+    height: 450px;
+    width: 940px;
+    display: block;
+}
+
+.body-signup .navbar-signup {
+    height: 220px;
+    width: 940px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-signup .col1-signup {
+    width: 255px;
+    height: 188px;
+}
+
+.col1-signup .fr-signup {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fr-signup .image-signup {
+    padding-bottom: 5px;
+    padding-left: 10px;
+    width: 45%;
+    height: 60px;
+
+}
+
+.image-signup img {
+    width: 80%;
+    height: 100%;
+}
+
+.col1-signup .mkt-signup {
+    width: 100%;
+    height: 30px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.col1-signup .ship-signup {
+    margin-left: 10px;
+    width: 100%;
+    height: 45px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.navbar-signup .col2-signup {
+    width: 255px;
+    height: 188px;
+}
+
+.col2-signup .fr-signup {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fr-signup .images-signup {
+    padding-bottom: 5px;
+    padding-left: 10px;
+    width: 45%;
+    height: 60px;
+
+}
+
+.images-signup img {
+    width: 80%;
+    height: 100%;
+}
+
+.col2-signup .mkt-signup {
+    width: 100%;
+    height: 30px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.col2-signup .ship-signup {
+    margin-left: 10px;
+    width: 100%;
+    height: 45px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.navbar-signup .col3-signup {
+    width: 255px;
+    height: 188px;
+}
+
+.col3-signup .fr-signup {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fr-signup .img-signup {
+    padding-bottom: 5px;
+    padding-left: 10px;
+    width: 45%;
+    height: 60px;
+
+}
+
+.img-signup img {
+    width: 80%;
+    height: 100%;
+}
+
+.col3-signup .mkt-signup {
+    width: 100%;
+    height: 30px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.col3-signup .ship-signup {
+    margin-left: 10px;
+    width: 100%;
+    height: 45px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.body-signup .contents-signup {
+    background-color: white;
+    height: 220px;
+    width: 940px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contents-signup .col4-signup {
+    width: 255px;
+    height: 188px;
+}
+
+.col4-signup .frs-signup {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.frs-signup .img-signup {
+    padding-bottom: 5px;
+    padding-left: 10px;
+    width: 40%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.img-signup img {
+    width: 80%;
+    height: 100%;
+}
+
+.col4-signup .mkt-signup {
+    width: 100%;
+    height: 30px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.col4-signup .ship-signup {
+    margin-left: 10px;
+    width: 100%;
+    height: 45px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+
+.contents-signup .col5-signup {
+    width: 255px;
+    height: 188px;
+
+}
+
+.col5-signup .fre-signup {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fre-signup .imge-signup {
+    padding-bottom: 5px;
+    padding-left: 10px;
+    width: 40%;
+    height: 60px;
+
+}
+
+.imge-signup img {
+    width: 80%;
+    height: 100%;
+}
+
+.col5-signup .mkt-signup {
+    width: 100%;
+    height: 30px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.col5-signup .ship-signup {
+    margin-left: 10px;
+    width: 100%;
+    height: 45px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.contents-signup .col6-signup {
+    width: 255px;
+    height: 188px;
+
+}
+
+.col6-signup .f-signup {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.f-signup .in-signup {
+    padding-bottom: 5px;
+    padding-left: 10px;
+    width: 40%;
+    height: 60px;
+
+}
+
+.in-signup img {
+    width: 80%;
+    height: 100%;
+}
+
+.col6-signup .mkt-signup {
+    width: 100%;
+    height: 30px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.col6-signup .ship-signup {
+    margin-left: 10px;
+    width: 100%;
+    height: 45px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.54);
+}
