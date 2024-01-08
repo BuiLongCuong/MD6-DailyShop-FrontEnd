@@ -6,7 +6,7 @@ export const signIn = createAsyncThunk(
     async (supplier) => {
         try {
             console.log(supplier)
-            const res = await getAxios().post("/login", supplier)
+            const res = await getAxios().post("/signIn", supplier)
             return res.data
         }catch (e){
             console.log(e)

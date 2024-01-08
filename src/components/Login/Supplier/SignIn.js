@@ -19,8 +19,8 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
     const dispatch = useDispatch();
-    const user = useSelector(({supplier}) => {
-        console.log(supplier.currentSupplier)
+    const supplier = useSelector(({supplier}) => {
+        // console.log(supplier.currentSupplier)
         return supplier.currentSupplier
     })
     const handleSubmit = (event) => {

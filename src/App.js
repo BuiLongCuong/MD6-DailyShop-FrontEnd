@@ -1,21 +1,61 @@
-import './App.css';
 import Login from "./components/Login/Customer/Login";
 import SignIn from "./components/Login/Supplier/SignIn";
 import React from "react";
-import {Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import HomeSimple from "./pages/HomeSimple";
 import SignUp from "./components/Login/Supplier/SignUp";
 import Register from "./components/Login/Customer/Register";
+import {useSelector} from "react-redux";
+import HomePageCustomer from "./pages/Homes/HomePageCustomer";
+import HomePage from "./pages/Homes/HomePage";
 
 function App() {
+    const currentCustomer = useSelector(({customer}) => {
+        console.log(customer.currentCustomer)
+        return customer.currentCustomer
+    })
+
+    const currentSupplier = useSelector(({supplier}) => {
+        console.log(supplier.currentSupplier)
+        return supplier.currentSupplier
+    })
+
   return (
       <>
           <Routes>
-              <Route path={'dailyShop'} element={<HomeSimple/>}/>
+              {/*<Route path={'dailyShop'} element={<HomeSimple/>}>*/}
+              {/*    <Route path={"login"} element={<Login/>}/>*/}
+              {/*    <Route path={"register"} element={<Register/>}/>*/}
+              {/*    <Route path={"signIn"} element={<SignIn/>}/>*/}
+              {/*    <Route path={"signUp"} element={<SignUp/>}/>*/}
+              {/*</Route>*/}
               <Route path={"login"} element={<Login/>}/>
               <Route path={"register"} element={<Register/>}/>
               <Route path={"signIn"} element={<SignIn/>}/>
               <Route path={"signUp"} element={<SignUp/>}/>
+              {/*{*/}
+              {/*    currentCustomer ? (*/}
+              {/*        <>*/}
+              {/*            <Route path={'dailyShop/customer'} element={<HomePageCustomer/>}/>*/}
+              {/*        </>*/}
+              {/*    ) : (*/}
+              {/*        <>*/}
+              {/*            <Route path={"*"} element={<Navigate to={"dailyShop"}/>}/>*/}
+              {/*        </>*/}
+              {/*    )*/}
+              {/*}*/}
+
+              {/*{*/}
+              {/*    currentCustomer ? (*/}
+              {/*        <>*/}
+              {/*            <Route path={'dailyShop/supplier'} element={<HomePage/>}/>*/}
+              {/*        </>*/}
+              {/*    ) : (*/}
+              {/*        <>*/}
+              {/*            <Route path={"*"} element={<Navigate to={"dailyShop"}/>}/>*/}
+              {/*        </>*/}
+              {/*    )*/}
+              {/*}*/}
           </Routes>
       </>
   );
