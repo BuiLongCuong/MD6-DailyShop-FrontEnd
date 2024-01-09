@@ -4,8 +4,11 @@ import {Outlet} from "react-router-dom";
 export default function MainBody(){
     return(
         <>
-            <MainBodyAbove/>
-            <Outlet/>
+            <div className="main-body">
+                <MainBodyAbove/>
+                <Outlet/>
+            </div>
+
         </>
     )
 }
