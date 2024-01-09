@@ -2,131 +2,142 @@ import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import {ErrorMessage, Field, Form, Formik} from "formik";
+import {useDispatch} from "react-redux";
+import {register} from "../../../redux/service/customerService";
+import * as Yup from "yup";
+import {Link, useNavigate} from "react-router-dom";
 
 export default function Register() {
-    let myStyle = {
-        width: '550px',
-        // border: "1px solid black",
-        // borderRadius: '20px',
-        // backgroundColor: 'white',
-        // boxShadow: "10px 10px 10px 0px rgba(0, 0, 0, 0.5)",
-        paddingTop: '50px'
-    }
-    let title = {
-        fontFamily: 'Helvetica',
-        fontSize: '50px',
-    }
-    let body = {
-        backgroundImage: 'url("https://i.pinimg.com/564x/de/01/39/de01390f37f551dbcd4d7aedaa4a59ce.jpg")',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'top',
-        width: '100%',
-        // height: '100%',
-        minHeight: '100vh',
-    }
+    const registerSchema = Yup.object().shape({
+        account: Yup.string()
+            .min(2, 'Tên tài khoản quá ngắn (tối thiểu 2 ký tự)!')
+            .max(50, 'Tên tài khoản quá dài (tối đa 50 ký tự)!')
+            .matches(/^[a-zA-Z0-9_]+$/, 'Tên tài khoản không được chứa ký tự đặc biệt hoặc có dấu!')
+            .required('Vui lòng nhập đủ thông tin!'),
+        password: Yup.string()
+            .min(5, 'Mật khẩu quá ngắn (tối thiểu 5 ký tự)!')
+            .max(50, 'Mật khẩu quá dài (tối đa 50 ký tự)!')
+            .matches(/^[a-zA-Z0-9_]+$/, 'Mật khẩu không được chứa ký tự đặc biệt hoặc có dấu!')
+            .required('Vui lòng nhập đủ thông tin!'),
+        email: Yup.string()
+            .email('Email không hợp lệ!')
+            .required('Vui lòng nhập đủ thông tin!'),
+        confirmPassword: Yup.string()
+            .oneOf([Yup.ref('password'), null], 'Xác nhận mật khẩu không khớp!')
+            .required('Vui lòng nhập đủ thông tin!'),
+    });
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     return (
-        <div style={body}>
-        <center>
-        <div style={myStyle}>
-        <React.Fragment>
-            <Typography variant="h6" gutterBottom style={title}>
-                REGISTER
-            </Typography>
-            <Grid container spacing={3}>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="username"
-                        name="username"
-                        label="Tên tài khoản"
-                        fullWidth
-                        autoComplete="given-name"
-                        variant="standard"
-                    />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="password"
-                        name="password"
-                        label="Mật khẩu"
-                        fullWidth
-                        autoComplete="family-name"
-                        variant="standard"
-                        type="password"
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                        required
-                        id="name"
-                        name="name"
-                        label="Họ và tên"
-                        fullWidth
-                        autoComplete="shipping address-line1"
-                        variant="standard"
-                    />
-                </Grid>
-                <Grid item xs={12} >
-                    <TextField
-                        required
-                        id="address"
-                        name="address"
-                        label="Địa chỉ"
-                        fullWidth
-                        autoComplete="shipping address-line2"
-                        variant="standard"
-                    />
-                </Grid>
-                <Grid item xs={12} sm={6} >
-                    <TextField
-                        required
-                        id="phoneNumber"
-                        name="phoneNumber"
-                        label="Số điện thoại"
-                        fullWidth
-                        autoComplete="shipping address-level2"
-                        variant="standard"
-                    />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        required
-                        id="dateOfBirth"
-                        name="dateOfBirth"
-                        label="Ngày/tháng/năm sinh"
-                        fullWidth
-                        autoComplete="shipping postal-code"
-                        variant="standard"
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <TextField
-                        required
-                        id="email"
-                        name="email"
-                        label="Email"
-                        fullWidth
-                        variant="standard"
-                    />
-                </Grid>
-                <Button
-                    fullWidth
-                    type="submit"
-                    variant="contained"
-                    sx={{ mt: 3, mb: 2, ml: 21, mr: 21 }}
-                >
-                    Register
-                </Button>
-            </Grid>
-        </React.Fragment>
-        </div>
-        </center>
-        </div>
-    );
+        <>
+            <div className="main2">
+                <div className="header">
+                    <div className="headerDetail">
+                        <div className="left">
+                            <div className="logo">
+                                <img src="img_2.png"
+                                     alt=""/>
+                            </div>
+                            <div className="title">
+                                Đăng ký
+                            </div>
+                        </div>
+                        <div className="right">
+                            <p>Bạn cần giúp đỡ?</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="content">
+                    <div className="background">
+                        <img src="img_6.png" alt=""/>
+                    </div>
+                    <div className="register">
+                        <div className="row1">
+                            <div className="intro">
+                                <p>Đăng ký</p>
+                            </div>
+                        </div>
+                        <div className="row2">
+                            <Formik initialValues={
+                                {
+                                    account: '',
+                                    password: '',
+                                    email: '',
+                                    confirmPassword: ''
+                                }
+                            }
+                                    onSubmit={(values) => {
+                                        register(values).then(() => {
+                                            console.log("đăng ký thành công")
+                                            navigate("/login")
+                                        })
+                                    }}
+                                    validationSchema={registerSchema}
+                            >
+                                <Form>
+                                    <div className="usernameOfRegister">
+                                        <Field name={"account"} type="text" placeholder="Tên đăng nhập"/>
+                                        <div className="validate">
+                                            <p style={{color: "red"}}><ErrorMessage name={"account"}/></p>
+                                        </div>
+                                    </div>
+                                    <div className="passwordOfRegister">
+                                        <Field name={"password"} type="password" placeholder="Mật khẩu"/>
+                                        <div className="validate">
+                                            <p style={{color: "red"}}><ErrorMessage name={"password"}/></p>
+                                        </div>
+                                    </div>
+                                    <div className="email">
+                                        <Field name={"email"} type="email" placeholder="Email"/>
+                                        <div className="validate">
+                                            <p style={{color: "red"}}><ErrorMessage name={"email"}/></p>
+                                        </div>
+                                    </div>
+
+                                    <div className="confirmPassword">
+                                        <Field name={"confirmPassword"} type="password"
+                                               placeholder="Nhập lại mật khẩu"/>
+                                        <div className="validate">
+                                            <p style={{color: "red"}}><ErrorMessage name={"confirmPassword"}/></p>
+                                        </div>
+                                    </div>
+                                    <div className="buttonRegister">
+                                        <button>ĐĂNG KÝ</button>
+                                    </div>
+                                </Form>
+                            </Formik>
+                            <div className="note">
+                                <div className="col1"></div>
+                                <div className="col2">
+                                    HOẶC
+                                </div>
+                                <div className="col3"></div>
+                            </div>
+                            <div className="other">
+                                <div class="registerGoogle">
+                                    <button style={{justifyContent: "center"}}>
+                                        <div class="icon"><img src="img.png" alt=""
+                                                               style={{width: "25px", height: "25px"}}/></div>
+                                        <div class="press">Google</div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row3">
+                            <div class="login">
+                                Bạn đã có tài khoản ?
+                                <Link to={"/login"}><p>Đăng nhập</p></Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer"></div>
+            </div>
+        </>
+    )
 }

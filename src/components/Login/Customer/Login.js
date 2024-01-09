@@ -1,125 +1,114 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {ErrorMessage, Field, Form, Formik} from "formik";
+import {useDispatch} from "react-redux";
+import {login} from "../../../redux/service/customerService";
+import * as Yup from "yup";
+import {Link} from "react-router-dom";
 
-function Copyright(props) {
+export default function Login() {
+    const loginSchema = Yup.object().shape({
+        account: Yup.string()
+            .min(2, 'Tên tài khoản quá ngắn (tối thiểu 2 ký tự)!')
+            .max(50, 'Tên tài khoản quá dài (tối đa 50 ký tự)!')
+            .matches(/^[a-zA-Z0-9_]+$/, 'Tên tài khoản không được chứa ký tự đặc biệt hoặc có dấu!')
+            .required('Vui lòng nhập đủ thông tin!'),
+        password: Yup.string()
+            .min(5, 'Mật khẩu quá ngắn (tối thiểu 5 ký tự)!')
+            .max(50, 'Mật khẩu quá dài (tối đa 50 ký tự)!')
+            .matches(/^[a-zA-Z0-9_]+$/, 'Mật khẩu không được chứa ký tự đặc biệt hoặc có dấu!')
+            .required('Vui lòng nhập đủ thông tin!'),
+    });
+    const dispatch = useDispatch()
     return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+        <>
+            <div className="main1">
+                <div className="header">
+                    <div className="headerDetail">
+                        <div className="left">
+                            <div className="logo">
+                                <img src="img_2.png"
+                                     alt=""/>
+                            </div>
+                            <div className="title">
+                                Đăng nhập
+                            </div>
+                        </div>
+                        <div className="right">
+                            <p>Bạn cần giúp đỡ?</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="content">
+                    <div className="background">
+                        <img src="img_6.png" alt=""/>
+                    </div>
+                    <div className="Login">
+                        <div className="row1">
+                            <div className="intro">
+                                <p>Đăng nhập</p>
+                            </div>
+                        </div>
 
-// TODO remove, this demo shouldn't need to reset the theme.
-
-const defaultTheme = createTheme();
-
-export default function SignInSide() {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            username: data.get('username'),
-            password: data.get('password'),
-        });
-    };
-
-    return (
-        <ThemeProvider theme={defaultTheme}>
-            <Grid container component="main" sx={{ height: '100vh' }}>
-                <CssBaseline />
-                <Grid
-                    item
-                    xs={false}
-                    sm={4}
-                    md={7}
-                    sx={{
-                        backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundColor: (t) =>
-                            t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                    }}
-                />
-                <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-                    <Box
-                        sx={{
-                            my: 8,
-                            mx: 4,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                        }}
-                    >
-                        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                            <LockOutlinedIcon />
-                        </Avatar>
-                        <Typography component="h1" variant="h5">
-                            Sign in
-                        </Typography>
-                        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                id="username"
-                                label="Username"
-                                name="username"
-                                autoComplete="username"
-                                autoFocus
-                            />
-                            <TextField
-                                margin="normal"
-                                required
-                                fullWidth
-                                name="password"
-                                label="Password"
-                                type="password"
-                                id="password"
-                                autoComplete="current-password"
-                            />
-                            <Button
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                sx={{ mt: 3, mb: 2 }}
+                        <div className="row2">
+                            <Formik initialValues={
+                                {
+                                    account: '',
+                                    password: ''
+                                }
+                            } onSubmit={(values) => {
+                                console.log(values);
+                                dispatch(login(values)).then(() => {
+                                    console.log("đăng nhập thành công")
+                                })
+                            }}
+                                    validationSchema={loginSchema}
                             >
-                                Sign In
-                            </Button>
-                            <Grid container>
-                                <Grid item xs>
-                                    <Link href="#" variant="body2">
-                                        Forgot password?
-                                    </Link>
-                                </Grid>
-                                <Grid item>
-                                    <Link href="#" variant="body2">
-                                        {"Don't have an account? Sign Up"}
-                                    </Link>
-                                </Grid>
-                            </Grid>
-                            <Copyright sx={{ mt: 5 }} />
-                        </Box>
-                    </Box>
-                </Grid>
-            </Grid>
-        </ThemeProvider>
-    );
+                                <Form>
+                                    <div className="usernameLogin">
+                                        <Field type="text" name="account" placeholder="Tên đăng nhập"/>
+                                        <div className="validate">
+                                            <p style={{color: "red"}}> <ErrorMessage name={"account"}/></p>
+                                        </div>
+                                    </div>
+                                    <div className="passwordLogin">
+                                        <Field type="password" name="password" placeholder="Mật khẩu"/>
+                                        <div className="validate">
+                                            <p style={{color: "red"}}> <ErrorMessage name={"password"}/></p>
+                                        </div>
+                                    </div>
+                                    <div className="buttonLogin">
+                                        <button type="submit">ĐĂNG NHẬP</button>
+                                    </div>
+                                </Form>
+                            </Formik>
+                            <div className="note">
+                                <div className="col1"></div>
+                                <div className="col2">
+                                    HOẶC
+                                </div>
+                                <div className="col3"></div>
+                            </div>
+                            <div className="other">
+                                <div className="loginGoogle">
+                                    <button style={{justifyContent: "center"}}>
+                                        <div className="icon"><img src="img.png" alt=""
+                                                                   style={{width: "25px", height: "25px"}}/></div>
+                                        <div className="press">Google</div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="row3">
+                            <div className="Register">
+                                Bạn chưa có tài khoản ?
+                                <Link to={"/register"}><p>Đăng ký</p></Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer"></div>
+            </div>
+        </>
+    )
 }
