@@ -35,6 +35,7 @@ function App() {
               <Route path={"signIn"} element={<SignIn/>}/>
               <Route path={"signUp"} element={<SignUp/>}/>
               <Route path={"information"} element={<Information/>}/>
+              <Route path={"dailyShop"} element={<HomeSimple/>}/>
               {/*{*/}
               {/*    currentCustomer ? (*/}
               {/*        <>*/}
