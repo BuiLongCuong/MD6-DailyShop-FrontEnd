@@ -1,16 +1,36 @@
 import * as React from 'react';
-import {Field, Form, Formik} from "formik";
-import {register} from "../../../redux/service/getAxios";
+import {ErrorMessage, Field, Form, Formik} from "formik";
+import {register} from "../../../redux/service/axios/getAxios";
 import {useNavigate} from "react-router-dom";
+import * as Yup from "yup";
 
 
 
 
 export default function SignUp() {
     const navigate = useNavigate()
+    const accountSchema = Yup.object().shape({
+        account: Yup.string()
+            .required("Vui lòng điền vào mục này.")
+            .min(3, "Kí tự không đủ.")
+            .max(10, "Kí tự quá dài."),
+        password: Yup.string()
+            .required("Vui lòng điền vào mục này.")
+            .min(2, "Kí tự không đủ.")
+            .max(10, "Kí tự quá dài."),
+        confirmPassword: Yup.string()
+            .required("Vui lòng điền vào mục này.")
+            .min(2, "Kí tự không đủ.")
+            .max(10, "Kí tự quá dài."),
+        email: Yup.string()
+            .required("Vui lòng điền vào mục này.")
+            .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Nhập đúng định dạng")
+
+    })
     const handleSubmit =async (values) => {
+        console.log(values)
         await register(values)
-        navigate("/login")
+        navigate("/signIn")
     };
 
     return (
@@ -70,69 +90,57 @@ export default function SignUp() {
                         <div className="form-login-signup">
                             <div className="register-signup">
                                 <div className="text-signup">
-                                    <div className="honey-signup">
-                                        <span>Đăng Kí</span>
-                                    </div>
+                                    <span>Đăng Ký</span>
                                 </div>
-                                <div className="form-signup">
-                                    <div className="form-input-signup">
-                                        <Formik initialValues={{
-                                            account:"",
-                                            password:"",
-                                            confirmPassword:"",
-                                            email:""
-                                        }} onSubmit={handleSubmit}>
-                                            <Form>
-                                                <div className="input-signup">
-                                                    <div className="form-account-signup">
-                                                        <div className="account-input-signup">
-                                                            <Field type="text"  name={"account"} className="account-signup"
-                                                                   placeholder="Username"/>
-                                                        </div>
-                                                        <div className="password-input-signup">
-                                                            <Field type="password" name={"password"} className="password-signup"
-                                                                   placeholder="Password"/>
-                                                        </div>
-                                                    </div>
-                                                    <div className="form-confirm-signup">
-                                                        <div className="confirm-input-signup">
-                                                            <Field type="password" name={"confirmPassword"} className="confirm-signup"
-                                                                   placeholder="ConfirmPassword"/>
-                                                        </div>
-                                                    </div>
-                                                    <div className="form-email-signup">
-                                                        <div className="email-input-signup">
-                                                            <Field type="email" name={"email"} className="email-signup" placeholder="Email"/>
-                                                        </div>
-                                                    </div>
-                                                    <div className="button-signup">
-                                                        <button type={"submit"}>Đăng Kí</button>
-                                                    </div>
-                                                    <div className="and-signup">
-                                                        <div className="hr-signup">
-                                                            <div></div>
-                                                        </div>
-                                                        <div className="text-signup">
-                                                            <span className="or-signup">Hoặc</span>
-                                                        </div>
-                                                        <div className="hr1-signup ">
-                                                            <div></div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="google-signup ">
-                                                        <div className="form-Oauth-signup ">
-                                                            <button>
-                                                                <i className="fa-brands fa-google"></i>
-                                                                <span>Google</span>
-                                                            </button>
-                                                        </div>
-                                                    </div>
+                                <div className="forme">
+                                    <Formik initialValues={
+                                        {
+                                            account: "",
+                                            password: "",
+                                            confirmPassword: "",
+                                            email: ""
+                                        }
+                                    } onSubmit={handleSubmit}
+                                            validationSchema={accountSchema}>
+                                        <Form>
+                                            <div className="text5">
+                                                <div className="input1">
+                                                    <Field type="text" className={"account-signup"} name={"account"}
+                                                           placeholder={"Username"}/>
+                                                    <div className={"account-signup-err"}><ErrorMessage
+                                                        name={"account"}/></div>
                                                 </div>
-                                            </Form>
+                                                <div className="input2">
+                                                    <Field type="text" className={"password-signup"} name={"password"}
+                                                           placeholder={"Mật Khẩu"}/>
 
-                                        </Formik>
-                                    </div>
+                                                    <div className={"password-signup-err"}><ErrorMessage
+                                                        name={"password"}/></div>
+                                                </div>
+                                            </div>
+                                            <div className="text6">
+                                                <div className="input3">
+                                                    <Field type="text" className={"confirm-signup"}
+                                                           name={"confirmPassword"} placeholder={"Xác Thực Mk"}/>
+                                                    <div className={"confirm-signup-err"}><ErrorMessage
+                                                        name={"confirmPassword"}/></div>
+                                                </div>
+                                                <div className="input4">
+                                                    <Field type="text" className={"email-signup"} name={"email"}
+                                                           placeholder={"Email"}/>
+                                                    <div className={"email-signup-err"}><ErrorMessage
+                                                        name={"email"}/></div>
+                                                </div>
+                                                <div className={"btn"}>
+                                                    <button type={"submit"}>Đăng Ký</button>
+                                                </div>
+                                            </div>
+
+                                        </Form>
+                                    </Formik>
                                 </div>
+                            </div>
+
                             </div>
                         </div>
                     </div>
@@ -238,7 +246,6 @@ export default function SignUp() {
                         </div>
                     </div>
                 </div>
-            </div>
         </>
     )
 }
