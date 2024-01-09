@@ -10,7 +10,7 @@ export default function HomeSimple() {
             <Header/>
             <Navbar/>
             <Body/>
-            <Outlet/>
+
             <Footer/>
         </>
     )
