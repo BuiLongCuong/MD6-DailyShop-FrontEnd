@@ -1,8 +1,19 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {signIn} from "../service/supplierService";
+import {editSupplier, findByAccountId, signIn} from "../service/supplierService";
 
 const initialState = {
-    currentSupplier:JSON.parse(localStorage.getItem("currentSupplier"))
+    currentSupplier:JSON.parse(localStorage.getItem("currentSupplier")),
+    list: [],
+    supplier: {
+        supplierName : '',
+        contactName : '',
+        phone: '',
+        address: '',
+        province: '',
+        district: '',
+        ward: '',
+        imageSupplier: '',
+    },
 }
 const userSlice = createSlice({
     name: "supplier/signIn",
@@ -11,6 +22,12 @@ const userSlice = createSlice({
         builder.addCase(signIn.fulfilled, (state, {payload}) => {
             localStorage.setItem("currentSupplier", JSON.stringify(payload))
             state.currentSupplier = payload;
+        })
+        builder.addCase(editSupplier.fulfilled, (state, action) => {
+            state.list[state.list.indexOf(action.payload)] = action.payload;
+        })
+        builder.addCase(findByAccountId.fulfilled, (state, {payload}) => {
+            state.supplier = payload.data;
         })
     }
 })

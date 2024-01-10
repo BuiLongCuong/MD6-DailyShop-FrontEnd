@@ -12,15 +12,15 @@ import {Information} from "./components/Login/Customer/Information";
 import AddInforFirstLogin from "./components/Login/Supplier/addInforFirstLogin";
 
 function App() {
-    const currentCustomer = useSelector(({customer}) => {
-        console.log(customer.currentCustomer)
-        return customer.currentCustomer
-    })
-
-    const currentSupplier = useSelector(({supplier}) => {
-        console.log(supplier.currentSupplier)
-        return supplier.currentSupplier
-    })
+    // const currentCustomer = useSelector(({customer}) => {
+    //     console.log(customer.currentCustomer)
+    //     return customer.currentCustomer
+    // })
+    //
+    // const currentSupplier = useSelector(({supplier}) => {
+    //     console.log(supplier.currentSupplier)
+    //     return supplier.currentSupplier
+    // })
 
   return (
       <>

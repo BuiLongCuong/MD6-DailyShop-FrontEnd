@@ -1,4 +1,4 @@
-import {createAsyncThunk} from "@reduxjs/toolkit";
+import {createAsyncThunk, current} from "@reduxjs/toolkit";
 import {getAxios} from "./axios/getAxios";
 
 export const signIn = createAsyncThunk(
@@ -15,10 +15,14 @@ export const signIn = createAsyncThunk(
 
 export const editSupplier = createAsyncThunk(
     'supplier/editSupplier',
-
+    async (supplierEdit) => {
+        return await getAxios().put("/suppliers/edit/" + supplierEdit.account.id, supplierEdit)
+    }
 )
 
 export const findByAccountId = createAsyncThunk(
     'supplier/findByAccountId',
-    async (id) => {}
+    async (id) => {
+        return await getAxios().get("/suppliers/findByAccountId/" + id);
+    }
 )

@@ -22,7 +22,6 @@ export default function SignIn() {
     const handleSubmit = (values) => {
         dispatch(signIn(values)).then(() => {
             checkRoleForSupplier();
-            resetForm();
         })
     };
 
