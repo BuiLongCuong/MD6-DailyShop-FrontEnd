@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {ErrorMessage, Field, Form, Formik} from "formik";
-import {register} from "../../../redux/service/axios/getAxios";
 import {useNavigate} from "react-router-dom";
 import * as Yup from "yup";
+import {signUp} from "../../../redux/service/supplierService";
 
 
 
@@ -29,7 +29,7 @@ export default function SignUp() {
     })
     const handleSubmit =async (values) => {
         console.log(values)
-        await register(values)
+        await signUp(values)
         navigate("/signIn")
     };
 
