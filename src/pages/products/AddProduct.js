@@ -42,51 +42,63 @@ function AddProduct() {
 
     return (
         <>
-            <h1> ADD PRODUCT </h1>
-            <Formik initialValues={{
-                productName: '',
-                description: '',
-                price: '',
-                stockQuantity: '',
-                category: {
-                    id: 1
-                },
-                account: {
-                    id: accountSupplier.id
-                }
+            {/*<h1> ADD PRODUCT </h1>*/}
+            {/*<Formik initialValues={{*/}
+            {/*    productName: '',*/}
+            {/*    description: '',*/}
+            {/*    price: '',*/}
+            {/*    stockQuantity: '',*/}
+            {/*    category: {*/}
+            {/*        id: 1*/}
+            {/*    },*/}
+            {/*    account: {*/}
+            {/*        id: accountSupplier.id*/}
+            {/*    }*/}
 
-            }}
+            {/*}}*/}
 
-                    onSubmit={Create}
+            {/*        onSubmit={Create}*/}
 
-            >
-                <Form>
-                    <Field name={"productName"} placeholder={"Enter ProductName"}/>
-                    <Field name={"description"} placeholder={"Enter Description"}/>
-                    <Field name={"price"} placeholder={" Enter Price"}/>
-                    <Field name={"stockQuantity"} placeholder={" Enter StockQuantity"}/>
-                    <Field name={"category.id"} as={"select"}>
-                        {
-                            categories.map((category) => {
-                                return <>
-                                    <option value={category.id}>{category.name}</option>
-                                </>
-                            })
-                        }
-                    </Field>
-                    <Field name={"photo.photoName"} type={"file"} multiple onChange={handleChange}
-                           placeholder={" Enter Photo"}/>
-                    {
-                        photo.map(p => (
-                            <>
-                                <img src={p.photoName} alt=""/>
-                            </>
-                        ))
-                    }
-                    <Field name={"account"} type={"hidden"} placeholder={" Enter Supplier"}/>
-                    <button type={"submit"}>Save</button>
-                </Form>
-            </Formik>
+            {/*>*/}
+            {/*    <Form>*/}
+            {/*        <Field name={"productName"} placeholder={"Enter ProductName"}/>*/}
+            {/*        <Field name={"description"} placeholder={"Enter Description"}/>*/}
+            {/*        <Field name={"price"} placeholder={" Enter Price"}/>*/}
+            {/*        <Field name={"stockQuantity"} placeholder={" Enter StockQuantity"}/>*/}
+            {/*        <Field name={"category.id"} as={"select"}>*/}
+            {/*            {*/}
+            {/*                categories.map((category) => {*/}
+            {/*                    return <>*/}
+            {/*                        <option value={category.id}>{category.name}</option>*/}
+            {/*                    </>*/}
+            {/*                })*/}
+            {/*            }*/}
+            {/*        </Field>*/}
+            {/*        <Field name={"photo.photoName"} type={"file"} multiple onChange={handleChange}*/}
+            {/*               placeholder={" Enter Photo"}/>*/}
+            {/*        {*/}
+            {/*            photo.map(p => (*/}
+            {/*                <>*/}
+            {/*                    <img src={p.photoName} alt=""/>*/}
+            {/*                </>*/}
+            {/*            ))*/}
+            {/*        }*/}
+            {/*        <Field name={"account"} type={"hidden"} placeholder={" Enter Supplier"}/>*/}
+            {/*        <button type={"submit"}>Save</button>*/}
+            {/*    </Form>*/}
+            {/*</Formik>*/}
+
+            <div className="mainAddPr">
+                <div className="frame">
+                    <div className="image">
+
+                    </div>
+                    <div className="infoProduct">
+
+                    </div>
+                </div>
+            </div>
+
         </>
     )
 }
