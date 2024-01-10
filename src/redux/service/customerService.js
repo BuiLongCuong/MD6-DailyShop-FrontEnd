@@ -18,3 +18,4 @@ export const login = createAsyncThunk(
 export const register = (newCustomer) => {
      return getAxios().post("customer/register", newCustomer)
 }
+
