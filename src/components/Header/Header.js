@@ -27,8 +27,10 @@ export default function Header() {
                                 <li><Link to={"https://web.facebook.com/"}><FaFacebook/></Link></li>
                                 <li><Link to={"#"}><FaInstagram/></Link></li>
                                 <li><Link to={"#"}><FaXTwitter/></Link></li>
-                                <li><Link to={"#"}><FaRegUser/></Link> <span style={{color: 'black'}}>Đăng Nhập</span>
+                                <li><Link to={"#"}><FaRegUser/></Link>
+                                    {/*<span style={{color: 'black'}}>Đăng Nhập</span>?*/}
                                 </li>
+                                <li className={"signIn"}><Link to={"#"}>Đăng Nhập</Link></li>
 
                             </ul>
                         </div>
