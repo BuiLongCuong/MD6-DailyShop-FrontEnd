@@ -1,3 +1,4 @@
+import "./information.module.css"
 export function Information() {
 
     return (

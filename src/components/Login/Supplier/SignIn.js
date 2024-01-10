@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import {signIn} from "../../../redux/service/supplierService";
+import "./login_supplier.module.css"
 
 export default function SignIn() {
     const dispatch = useDispatch();

@@ -1,14 +1,10 @@
 import * as React from 'react';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {useDispatch} from "react-redux";
 import {register} from "../../../redux/service/customerService";
 import * as Yup from "yup";
 import {Link, useNavigate} from "react-router-dom";
+import "./register.module.css"
 
 export default function Register() {
     const registerSchema = Yup.object().shape({

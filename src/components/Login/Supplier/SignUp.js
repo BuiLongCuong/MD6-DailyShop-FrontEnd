@@ -3,6 +3,7 @@ import {ErrorMessage, Field, Form, Formik} from "formik";
 import {register} from "../../../redux/service/axios/getAxios";
 import {useNavigate} from "react-router-dom";
 import * as Yup from "yup";
+import "./signUp_supplier.module.css"
 
 
 

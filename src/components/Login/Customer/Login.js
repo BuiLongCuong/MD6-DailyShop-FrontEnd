@@ -4,6 +4,7 @@ import {useDispatch} from "react-redux";
 import {login} from "../../../redux/service/customerService";
 import * as Yup from "yup";
 import {Link} from "react-router-dom";
+import "./login.module.css"
 
 export default function Login() {
     const loginSchema = Yup.object().shape({
