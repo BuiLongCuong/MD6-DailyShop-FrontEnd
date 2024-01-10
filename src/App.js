@@ -9,15 +9,15 @@ import {useSelector} from "react-redux";
 import HomePageCustomer from "./pages/Homes/HomePageCustomer";
 import HomePage from "./pages/Homes/HomePage";
 import {Information} from "./components/Login/Customer/Information";
+import AddProduct from "./pages/products/AddProduct";
+import {ListProduct} from "./pages/products/ListProduct";
 
 function App() {
     const currentCustomer = useSelector(({customer}) => {
-        console.log(customer.currentCustomer)
         return customer.currentCustomer
     })
 
     const currentSupplier = useSelector(({supplier}) => {
-        console.log(supplier.currentSupplier)
         return supplier.currentSupplier
     })
 
@@ -35,6 +35,8 @@ function App() {
               <Route path={"signIn"} element={<SignIn/>}/>
               <Route path={"signUp"} element={<SignUp/>}/>
               <Route path={"information"} element={<Information/>}/>
+              <Route path={"add"} element={<AddProduct/>}></Route>
+              <Route path={"list"} element={<ListProduct/>}></Route>
               {/*{*/}
               {/*    currentCustomer ? (*/}
               {/*        <>*/}

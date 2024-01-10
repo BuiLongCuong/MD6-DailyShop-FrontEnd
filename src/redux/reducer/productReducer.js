@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {add, Delete, getAll, search, Update, updateForm} from "../service/productService.js";
+import {add, Delete, getAllByIdUser, search, Update, updateForm} from "../service/productService.js";
 
 const initialState = {
     list: [],
@@ -12,7 +12,7 @@ const productSlice = createSlice({
     name: 'products',
     initialState,
     extraReducers: builder => {
-        builder.addCase(getAll.fulfilled, (state, {payload}) => {
+        builder.addCase(getAllByIdUser.fulfilled, (state, {payload}) => {
             state.list = payload;
         })
         builder.addCase(add.fulfilled, (state, {payload}) => {

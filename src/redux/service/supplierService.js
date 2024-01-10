@@ -12,3 +12,7 @@ export const signIn = createAsyncThunk(
         }
     }
 )
+
+export const signUp = (newSupplier) => {
+    return getAxios().post("suppliers/register", newSupplier)
+}
