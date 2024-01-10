@@ -190,6 +190,7 @@ input {
     height: 40px;
     width: 329px;
     padding-left: 20px;
+    border: 1px solid #dbdbdb;
 }
 
 .button {
@@ -217,7 +218,7 @@ input {
     100% {background-color: #ee4d2d}
 }
 
-.button button:focus{
+.registerGoogle button:focus{
     animation: changeColor 1s;
 }
 .other .registerGoogle button:focus{
@@ -231,6 +232,8 @@ input {
     justify-content: center;
     margin-top: 20px;
 }
+
+
 
 .col1, .col3 {
     border-top: 1px solid #dbdbdb;
@@ -248,11 +251,12 @@ input {
 .other {
     display: flex;
     justify-content: center;
-    width: 330px;
+    width: 339px;
     border: 1px solid rgba(0, 0, 0, .26);
     margin-left: 30px;
-
+    border-radius: 5px 5px 5px 5px;
 }
+
 
 .other .registerGoogle button {
     width: 100%;
@@ -295,28 +299,29 @@ input {
     margin-top: 20px;
 }
 
-.row3 p {
+.row3 .login p {
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
     color: #ee4d2d;
     font-family: "Helvetica Neue", Helvetica, Arial, 文泉驛正黑, "WenQuanYi Zen Hei", "Hiragino Sans GB", "儷黑 Pro", "LiHei Pro", "Heiti TC", 微軟正黑體, "Microsoft JhengHei UI", "Microsoft JhengHei", sans-serif;;
-    margin-top: 1px;
+    margin-top: 4.5px;
     padding-left: 6px;
 }
-
-
 
 * {
     margin: 0;
     padding: 0;
 }
 
-.header {
+.headerRegister {
     height: 83px;
     width: 100%;
     display: flex;
     justify-content: center;
+    z-index: 9999;
+    position: fixed;
+    background-color: white;
 }
 
 .content {
@@ -331,38 +336,38 @@ input {
     background-color: white;
 }
 
-.header .headerDetail {
+.headerRegister .headerDetail {
     width: 1153px;
     height: 100%;
     display: flex;
     justify-content: space-between;
 }
 
-.header .headerDetail .left {
+.headerRegister .headerDetail .left {
     height: 100%;
     width: 265px;
     display: flex;
     justify-items: center;
 }
 
-.header .headerDetail .right {
+.headerRegister .headerDetail .right {
     height: 100%;
     width: 115px;
 }
 
 
 
-.header .headerDetail .left .title {
+.headerRegister .headerDetail .left .title {
     font-weight: 400;
     font-size: 24px;
-    line-height: 29px;
+    line-height: 29.5px;
     color: #222222;
     margin-top: 30px;
     margin-left: 5px;
     font-family: "Helvetica Neue", Helvetica, Arial, 文泉驛正黑, "WenQuanYi Zen Hei", "Hiragino Sans GB", "儷黑 Pro", "LiHei Pro", "Heiti TC", 微軟正黑體, "Microsoft JhengHei UI", "Microsoft JhengHei", sans-serif;;
 }
 
-.header .headerDetail .right p {
+.headerRegister .headerDetail .right p {
     margin-top: 30px;
     font-weight: 400;
     font-size: 14px;
@@ -424,11 +429,13 @@ input {
 .row2 .acc .usernameRegister input {
     width: 160px;
     margin-left: 30px;
+    border: 1px solid #dbdbdb;
 }
 
 .row2 .acc .passwordRegister input {
     width: 160px;
     margin-right: 30px;
+    border: 1px solid #dbdbdb;
 }
 
 .row2 .infoPer .phone input {
@@ -497,26 +504,8 @@ input {
     color: #ffffff;
 }
 
-@keyframes changeColor {
-    0% {background-color: #ee4d2d}
-    50% {background-color: #f3826c}
-    100% {background-color: #ee4d2d}
-}
 
-.button button:focus{
-    animation: changeColor 1s;
-}
-.other .registerGoogle button:focus{
-    animation: changeColor 1s;
-}
 
-.note {
-    width: 100%;
-    height: 36px;
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
 
 .col1, .col3 {
     border-top: 1px solid #dbdbdb;
@@ -531,65 +520,9 @@ input {
     font-weight: 400;
 }
 
-.other {
-    display: flex;
-    justify-content: center;
-    width: 330px;
-    border: 1px solid rgba(0, 0, 0, .26);
-    margin-left: 30px;
-
-}
-
-.other .registerGoogle button {
-    width: 100%;
-    height: 38px;
-    background-color: white;
-    border-radius: 5px 5px 5px 5px;
-    border: none;
-    display: flex;
-    flex-direction: row;
-}
-
-.other .registerGoogle {
-    width: 100%;
-}
 
 
-.other .press{
-    width: 50px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    color: #222222;
-    margin-top: 12px;
-}
 
-.other .icon {
-    margin-top: 7px;
-}
-
-.row3 {
-    width: 100%;
-    height: 50px;
-    /*background-color: orange;*/
-    display: flex;
-    justify-content: center;
-}
-
-.login {
-    display: flex;
-    margin-top: 20px;
-}
-
-.row3 .login p {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    color: #ee4d2d;
-    font-family: "Helvetica Neue", Helvetica, Arial, 文泉驛正黑, "WenQuanYi Zen Hei", "Hiragino Sans GB", "儷黑 Pro", "LiHei Pro", "Heiti TC", 微軟正黑體, "Microsoft JhengHei UI", "Microsoft JhengHei", sans-serif;;
-    margin-top: 5px;
-    padding-left: 6px;
-}
 
 
 

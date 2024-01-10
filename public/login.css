@@ -3,11 +3,14 @@
     padding: 0;
 }
 
-.header {
+.headerLogin {
     height: 83px;
     width: 100%;
     display: flex;
     justify-content: center;
+    z-index: 9999;
+    position: fixed;
+    background-color: white;
 }
 
 .content {
@@ -22,40 +25,40 @@
 /*    background-color: blueviolet;*/
 /*}*/
 
-.header .headerDetail {
+.headerLogin .headerDetail {
     width: 1153px;
     height: 100%;
     display: flex;
     justify-content: space-between;
 }
 
-.header .headerDetail .left {
+.headerLogin .headerDetail .left {
     height: 100%;
     width: 265px;
     display: flex;
     justify-items: center;
 }
 
-.header .headerDetail .right {
+.headerLogin .headerDetail .right {
     height: 100%;
     width: 115px;
 }
 
-.header .headerDetail .left .logo {
+.headerLogin .headerDetail .left .logo {
     height: 100%;
     width: 220px;
-    background-color: crimson;
+    /*background-color: crimson;*/
 }
 
-.header .headerDetail .left .logo img {
+.headerLogin .headerDetail .left .logo img {
     height: 100%;
     width: 133px;
 }
 
-.header .headerDetail .left .title {
+.headerLogin .headerDetail .left .title {
     font-weight: 400;
     font-size: 24px;
-    line-height: 29px;
+    line-height: 27px;
     color: #222222;
     margin-top: 30px;
     margin-left: 5px;
@@ -63,7 +66,7 @@
     width: 190px;
 }
 
-.header .headerDetail .right p {
+.headerLogin .headerDetail .right p {
     margin-top: 30px;
     font-weight: 400;
     font-size: 14px;
@@ -133,12 +136,14 @@
     height: 40px;
     width: 338px;
     padding-left: 20px;
+    border: 1px solid #dbdbdb;
 }
 
 .row2 .passwordLogin input {
     height: 40px;
     width: 338px;
     padding-left: 20px;
+    border: 1px solid #dbdbdb;
 }
 
 .row2 .usernameLogin .validate p {
@@ -257,7 +262,7 @@
     line-height: 17px;
     color: #ee4d2d;
     font-family: "Helvetica Neue", Helvetica, Arial, 文泉驛正黑, "WenQuanYi Zen Hei", "Hiragino Sans GB", "儷黑 Pro", "LiHei Pro", "Heiti TC", 微軟正黑體, "Microsoft JhengHei UI", "Microsoft JhengHei", sans-serif;;
-    margin-top: 5px;
+    margin-top: 4.5px;
     padding-left: 6px;
 }
 

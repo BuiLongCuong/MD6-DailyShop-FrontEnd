@@ -1,35 +1,34 @@
 import * as React from 'react';
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {register} from "../../../redux/service/axios/getAxios";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import * as Yup from "yup";
-
-
+import {signUp} from "../../../redux/service/supplierService";
 
 
 export default function SignUp() {
     const navigate = useNavigate()
-    const accountSchema = Yup.object().shape({
+    const signUpSchema = Yup.object().shape({
         account: Yup.string()
-            .required("Vui lòng điền vào mục này.")
-            .min(3, "Kí tự không đủ.")
-            .max(10, "Kí tự quá dài."),
+            .min(2, 'Tên tài khoản quá ngắn (tối thiểu 2 ký tự)!')
+            .max(50, 'Tên tài khoản quá dài (tối đa 50 ký tự)!')
+            .matches(/^[a-zA-Z_]+$/, 'Tên tài khoản không được chứa ký tự số,ký tự đặc biệt hoặc có dấu!')
+            .required('Vui lòng nhập đủ thông tin!'),
         password: Yup.string()
-            .required("Vui lòng điền vào mục này.")
-            .min(2, "Kí tự không đủ.")
-            .max(10, "Kí tự quá dài."),
-        confirmPassword: Yup.string()
-            .required("Vui lòng điền vào mục này.")
-            .min(2, "Kí tự không đủ.")
-            .max(10, "Kí tự quá dài."),
+            .min(5, 'Mật khẩu quá ngắn (tối thiểu 5 ký tự)!')
+            .max(50, 'Mật khẩu quá dài (tối đa 50 ký tự)!')
+            .matches(/^[a-zA-Z0-9_]+$/, 'Mật khẩu không được chứa ký tự đặc biệt hoặc có dấu!')
+            .required('Vui lòng nhập đủ thông tin!'),
         email: Yup.string()
-            .required("Vui lòng điền vào mục này.")
-            .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Nhập đúng định dạng")
-
-    })
-    const handleSubmit =async (values) => {
+            .email('Email không hợp lệ!')
+            .required('Vui lòng nhập đủ thông tin!'),
+        confirmPassword: Yup.string()
+            .oneOf([Yup.ref('password'), null], 'Xác nhận mật khẩu không khớp!')
+            .required('Vui lòng nhập đủ thông tin!'),
+    });
+    const handleSubmit = async (values) => {
         console.log(values)
-        await register(values)
+        await signUp(values)
         navigate("/signIn")
     };
 
@@ -40,10 +39,10 @@ export default function SignUp() {
                     <div className="navbar-signup">
                         <div className="left-signup">
                             <div className="logo-signup">
-                                <img src="/image/img.png" alt=""/>
+                                <img src="img_2.png" alt=""/>
                             </div>
                             <div className="text-signup">
-                                <span >Đăng ký</span>
+                                <span>Đăng ký</span>
                             </div>
                         </div>
                         <div className="right-signup">
@@ -56,7 +55,7 @@ export default function SignUp() {
                         <div className="textarea-signup">
                             <div className="form-text-signup">
                                 <div className="shoppe-signup">
-                                    Daily Việt Nam
+                                    DailyShop Việt Nam
                                 </div>
                                 <div className="supplier-signup">
                                     Trở thành người bán ngay hôm nay
@@ -101,17 +100,18 @@ export default function SignUp() {
                                             email: ""
                                         }
                                     } onSubmit={handleSubmit}
-                                            validationSchema={accountSchema}>
+                                            validationSchema={signUpSchema}>
                                         <Form>
                                             <div className="text5">
                                                 <div className="input1">
                                                     <Field type="text" className={"account-signup"} name={"account"}
-                                                           placeholder={"Username"}/>
+                                                           placeholder={"Tên đăng nhập"}/>
                                                     <div className={"account-signup-err"}><ErrorMessage
                                                         name={"account"}/></div>
                                                 </div>
                                                 <div className="input2">
-                                                    <Field type="text" className={"password-signup"} name={"password"}
+                                                    <Field type="password" className={"password-signup"}
+                                                           name={"password"}
                                                            placeholder={"Mật Khẩu"}/>
 
                                                     <div className={"password-signup-err"}><ErrorMessage
@@ -120,13 +120,13 @@ export default function SignUp() {
                                             </div>
                                             <div className="text6">
                                                 <div className="input3">
-                                                    <Field type="text" className={"confirm-signup"}
-                                                           name={"confirmPassword"} placeholder={"Xác Thực Mk"}/>
+                                                    <Field type="password" className={"confirm-signup"}
+                                                           name={"confirmPassword"} placeholder={"Nhập lại mật khẩu"}/>
                                                     <div className={"confirm-signup-err"}><ErrorMessage
                                                         name={"confirmPassword"}/></div>
                                                 </div>
                                                 <div className="input4">
-                                                    <Field type="text" className={"email-signup"} name={"email"}
+                                                    <Field type="email" className={"email-signup"} name={"email"}
                                                            placeholder={"Email"}/>
                                                     <div className={"email-signup-err"}><ErrorMessage
                                                         name={"email"}/></div>
@@ -135,117 +135,138 @@ export default function SignUp() {
                                                     <button type={"submit"}>Đăng Ký</button>
                                                 </div>
                                             </div>
-
                                         </Form>
                                     </Formik>
                                 </div>
+                                <div className="noteSignUp">
+                                    <div className="col1"></div>
+                                    <div className="col2">
+                                        HOẶC
+                                    </div>
+                                    <div className="col3"></div>
+                                </div>
+                                <div className="otherSignUp">
+                                    <div className="signUpGoogle">
+                                        <button style={{justifyContent: "center"}}>
+                                            <div className="icon"><img src="img.png" alt=""
+                                                                       style={{width: "25px", height: "25px"}}/></div>
+                                            <div className="press">Google</div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div className="transferToSignIn">
+                                    <div className="signIn">
+                                        Bạn đã có tài khoản ?
+                                        <Link to={"/signIn"}><p>Đăng nhập</p></Link>
+                                    </div>
+                                </div>
                             </div>
 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="footer-signup ">
+                <div className="mkt-signup">
+                    <div className="daily-signup">
+                        <div className="header-signUp">
+                            TẠI SAO NÊN BÁN HÀNG TRÊN DAILYSHOP
+                        </div>
+                    </div>
+                    <div className="body-signup">
+                        <div className="navbar-signup ">
+                            <div className="col1-signup ">
+                                <div className="fr-signup ">
+                                    <div className="image-signup ">
+                                        <img src="/image/img_1.png" alt=""/>
+                                    </div>
+                                </div>
+                                <div className="mkt-signup ">
+                                    Miễn phí đăng ký
+                                </div>
+                                <div className="ship-signup ">
+                                    Mở Shop và bán hàng dễ dàng hơn cùng DailyShop!
+                                </div>
+                            </div>
+                            <div className="col2-signup ">
+                                <div className="fr-signup ">
+                                    <div className="images-signup ">
+                                        <img src="/image/img_2.png" alt=""/>
+                                    </div>
+                                </div>
+                                <div className="mkt-signup ">
+                                    Công cụ marketing đa dạng
+                                </div>
+                                <div className="ship-signup ">
+                                    Thu hút người mua và tăng trưởng đơn hàng với tính năng Flash Sale, Livestream,
+                                    Mua Kèm Deal
+                                    Sốc,...
+                                </div>
+                            </div>
+                            <div className="col3-signup ">
+                                <div className="fr-signup ">
+                                    <div className="img-signup ">
+                                        <img src="/image/img_3.png" alt=""/>
+                                    </div>
+                                </div>
+                                <div className="mkt-signup ">Vận chuyển dễ dàng</div>
+                                <div className="ship-signup ">Linh hoạt lựa chọn đơn vị vận chuyển và theo dõi chi
+                                    tiết hành trình
+                                    đơn
+                                    hàng.
+                                </div>
+                            </div>
+                        </div>
+                        <div className="contents-signup ">
+                            <div className="col4-signup ">
+                                <div className="frs-signup ">
+                                    <div className="img-signup ">
+                                        <img src="/image/img_4.png" alt=""/>
+                                    </div>
+                                </div>
+                                <div className="mkt-signup ">
+                                    Siêu sale cùng Daily
+                                </div>
+                                <div className="ship-signup ">Bứt phá doanh số với các chiến dịch lớn: 9.9 Ngày Siêu Mua
+                                    Sắm, 11.11
+                                    Siêu
+                                    Sale,...
+                                </div>
+                            </div>
+                            <div className="col5-signup ">
+                                <div className="fre-signup ">
+                                    <div className="imge-signup ">
+                                        <img src="/image/img_5.png" alt=""/>
+                                    </div>
+                                </div>
+                                <div className="mkt-signup ">
+                                    Hỗ trợ bán hàng hiệu quả
+                                </div>
+                                <div className="ship-signup ">Đa dạng tính năng giúp quản lý, tương tác với khách hàng
+                                    và theo dõi
+                                    hiệu quả
+                                    hoạt động của Shop.
+                                </div>
+                            </div>
+                            <div className="col6-signup ">
+                                <div className="f-signup ">
+                                    <div className="in-signup ">
+                                        <img src="/image/img_6.png" alt=""/>
+                                    </div>
+                                </div>
+                                <div className="mkt-signup ">
+                                    Kết nối cộng đồng Người bán
+                                </div>
+                                <div className="ship-signup ">
+                                    Chia sẻ kinh nghiệm bán hàng thực tế thông qua các hội thảo, khóa học trực tuyến
+                                    và cổng
+                                    thông tin hỗ trợ.
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="footer-signup ">
-                    <div className="mkt-signup">
-                        <div className="daily-signup">
-                            <div className="header-signup ">
-                                TẠI SAO NÊN BÁN HÀNG TRÊN DAILY
-                            </div>
-                        </div>
-                        <div className="body-signup">
-                            <div className="navbar-signup ">
-                                <div className="col1-signup ">
-                                    <div className="fr-signup ">
-                                        <div className="image-signup ">
-                                            <img src="/image/img_1.png" alt=""/>
-                                        </div>
-                                    </div>
-                                    <div className="mkt-signup ">
-                                        Miễn phí đăng ký
-                                    </div>
-                                    <div className="ship-signup ">
-                                        Mở Shop và bán hàng dễ dàng hơn cùng Shopee!
-                                    </div>
-                                </div>
-                                <div className="col2-signup ">
-                                    <div className="fr-signup ">
-                                        <div className="images-signup ">
-                                            <img src="/image/img_2.png" alt=""/>
-                                        </div>
-                                    </div>
-                                    <div className="mkt-signup ">
-                                        Công cụ marketing đa dạng
-                                    </div>
-                                    <div className="ship-signup ">
-                                        Thu hút người mua và tăng trưởng đơn hàng với tính năng Flash Sale, Livestream,
-                                        Mua Kèm Deal
-                                        Sốc,...
-                                    </div>
-                                </div>
-                                <div className="col3-signup ">
-                                    <div className="fr-signup ">
-                                        <div className="img-signup ">
-                                            <img src="/image/img_3.png" alt=""/>
-                                        </div>
-                                    </div>
-                                    <div className="mkt-signup ">Vận chuyển dễ dàng</div>
-                                    <div className="ship-signup ">Linh hoạt lựa chọn đơn vị vận chuyển và theo dõi chi
-                                        tiết hành trình
-                                        đơn
-                                        hàng.
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="contents-signup ">
-                                <div className="col4-signup ">
-                                    <div className="frs-signup ">
-                                        <div className="img-signup ">
-                                            <img src="/image/img_4.png" alt=""/>
-                                        </div>
-                                    </div>
-                                    <div className="mkt-signup ">
-                                        Siêu sale cùng Daily
-                                    </div>
-                                    <div className="ship-signup ">Bứt phá doanh số với các chiến dịch lớn: 9.9 Ngày Siêu Mua
-                                        Sắm, 11.11
-                                        Siêu
-                                        Sale,...
-                                    </div>
-                                </div>
-                                <div className="col5-signup ">
-                                    <div className="fre-signup ">
-                                        <div className="imge-signup ">
-                                            <img src="/image/img_5.png" alt=""/>
-                                        </div>
-                                    </div>
-                                    <div className="mkt-signup ">
-                                        Hỗ trợ bán hàng hiệu quả
-                                    </div>
-                                    <div className="ship-signup ">Đa dạng tính năng giúp quản lý, tương tác với khách hàng
-                                        và theo dõi
-                                        hiệu quả
-                                        hoạt động của Shop.
-                                    </div>
-                                </div>
-                                <div className="col6-signup ">
-                                    <div className="f-signup ">
-                                        <div className="in-signup ">
-                                            <img src="/image/img_6.png" alt=""/>
-                                        </div>
-                                    </div>
-                                    <div className="mkt-signup ">
-                                        Kết nối cộng đồng Người bán
-                                    </div>
-                                    <div className="ship-signup ">
-                                        Chia sẻ kinh nghiệm bán hàng thực tế thông qua các hội thảo, khóa học trực tuyến
-                                        và cổng
-                                        thông tin hỗ trợ.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            </div>
         </>
     )
 }

@@ -1,3 +1,5 @@
+import {Field, Form, Formik} from "formik";
+
 export function Information() {
 
     return (
@@ -22,13 +24,24 @@ export function Information() {
                 </div>
                 <div className="bodyInfo">
                     <div className="contentInfo">
+                        <Formik initialValues={
+                            {
+                                customerName : '',
+                                address : '',
+                                phone : '',
+                                dateOfBirth : ''
+                            }
+                        } onSubmit={(values) => {
+                            console.log(values)
+                        }}>
+                            <Form>
                         <div className="infoDetails">
                             <div className="infoName">
                                 <div className="noteName">
                                     <p>Tên</p>
                                 </div>
                                 <div className="name">
-                                    <input type="text"/>
+                                    <Field type="text" name="customerName"/>
                                 </div>
                             </div>
                             <div className="infoAddress">
@@ -36,7 +49,7 @@ export function Information() {
                                     <p>Địa chỉ</p>
                                 </div>
                                 <div className="address">
-                                    <input type="text"/>
+                                    <Field type="text" name="address"/>
                                 </div>
                             </div>
                             <div className="infoPhone">
@@ -44,7 +57,7 @@ export function Information() {
                                     <p>Số điện thoại</p>
                                 </div>
                                 <div className="phone">
-                                    <input type="text"/>
+                                    <Field type="text" name="phone"/>
                                 </div>
                             </div>
                             <div className="infoBirthday">
@@ -52,18 +65,20 @@ export function Information() {
                                     <p>Ngày sinh</p>
                                 </div>
                                 <div class="birthday">
-                                    <input type="date"/>
+                                    <Field type="date" name="dateOfBirth"/>
                                 </div>
                             </div>
                             <div class="decision">
                                 <div class="cancel">
-                                    <button>Hủy</button>
+                                    <button type={"submit"}>Hủy</button>
                                 </div>
                                 <div class="save">
-                                    <button>Lưu</button>
+                                    <button type={"submit"}>Lưu</button>
                                 </div>
                             </div>
                         </div>
+                            </Form>
+                        </Formik>
                     </div>
                 </div>
             </div>

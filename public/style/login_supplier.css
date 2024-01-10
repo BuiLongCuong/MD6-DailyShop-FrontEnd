@@ -4,7 +4,7 @@
     font-family: "Helvetica Neue", Helvetica, Arial, 文泉驛正黑, "WenQuanYi Zen Hei", "Hiragino Sans GB", "儷黑 Pro", "LiHei Pro", "Heiti TC", 微軟正黑體, "Microsoft JhengHei UI", "Microsoft JhengHei", sans-serif;;
 }
 
-.header {
+.headerSignIn {
     height: 82px;
     width: 100%;
     display: flex;
@@ -16,7 +16,7 @@
     position: fixed;
 }
 
-.header .navbar {
+.headerSignIn .navbar {
     width: 1153px;
     height: 100%;
     display: flex;
@@ -71,7 +71,7 @@
     color: #ee4d2d;
 }
 
-.content {
+.contentSignIn {
     height: 800px;
     background-color: white;
     width: 100%;
@@ -79,7 +79,7 @@
     justify-content: center;
 }
 
-.content .body {
+.contentSignIn .body {
     width: 1050px;
     height: 100%;
     /*background-color: orange;*/
@@ -147,7 +147,7 @@
 }
 
 .login .form-login {
-    width: 390px;
+    width: 410px;
     height: 470px;
     -webkit-box-shadow: 0 0 10px 5px rgba(199,195,199,1);
     -moz-box-shadow: 0 0 10px 5px rgba(199,195,199,1);
@@ -212,8 +212,6 @@
     padding-top: 8px;
     width: 100%;
     height: 60px;
-    /*display: flex;*/
-    /*align-items: center;*/
 }
 
 .input-username .username {
@@ -259,11 +257,13 @@
 .errUsername, .errPassword {
     margin-top: 5px;
     color: red;
+    font-size: 12px;
 }
 
 .errPassword {
     margin-top: 1px;
     color: red;
+    font-size: 12px;
 }
 
 .body-login .forgot {
@@ -385,6 +385,82 @@
     /*background-color: #222222;*/
 }
 
+
+.transferToSignUp {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.signUp {
+    display: flex;
+    margin-top: 20px;
+}
+
+.transferToSignUp .signUp p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #ee4d2d;
+    font-family: "Helvetica Neue", Helvetica, Arial, 文泉驛正黑, "WenQuanYi Zen Hei", "Hiragino Sans GB", "儷黑 Pro", "LiHei Pro", "Heiti TC", 微軟正黑體, "Microsoft JhengHei UI", "Microsoft JhengHei", sans-serif;;
+    margin-top: 4.5px;
+    padding-left: 6px;
+}
+
+
+
+
+.otherSignIn {
+    display: flex;
+    justify-content: center;
+    width: 370px;
+    border: 1px solid rgba(0, 0, 0, .26);
+    border-radius: 5px 5px 5px 5px;
+    margin-top: 10px;
+}
+
+
+.otherSignIn .signInGoogle button {
+    width: 100%;
+    height: 38px;
+    background-color: white;
+    border-radius: 5px 5px 5px 5px;
+    border: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.otherSignIn .signInGoogle {
+    width: 100%;
+}
+
+
+.otherSignIn .press{
+    width: 50px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #222222;
+    margin-top: 12px;
+}
+
+.otherSignIn .icon {
+    margin-top: 7px;
+}
+
+@keyframes changeColor {
+    0% {background-color: #ee4d2d}
+    50% {background-color: #f3826c}
+    100% {background-color: #ee4d2d}
+}
+
+.signInGoogle button:focus{
+    animation: changeColor 1s;
+}
+.otherSignIn .signInGoogle button:focus{
+    animation: changeColor 1s;
+}
 
 /*.footer {*/
 /*    height: 100px;*/
