@@ -9,6 +9,7 @@ import {useSelector} from "react-redux";
 import HomePageCustomer from "./pages/Homes/HomePageCustomer";
 import HomePage from "./pages/Homes/HomePage";
 import {Information} from "./components/Login/Customer/Information";
+import AddInforFirstLogin from "./components/Login/Supplier/addInforFirstLogin";
 
 function App() {
     const currentCustomer = useSelector(({customer}) => {
@@ -35,6 +36,7 @@ function App() {
               <Route path={"signIn"} element={<SignIn/>}/>
               <Route path={"signUp"} element={<SignUp/>}/>
               <Route path={"information"} element={<Information/>}/>
+              <Route path={"addProfileSupplier"} element={<AddInforFirstLogin />}/>
               <Route path={"dailyShop"} element={<HomeSimple/>}/>
               {/*{*/}
               {/*    currentCustomer ? (*/}

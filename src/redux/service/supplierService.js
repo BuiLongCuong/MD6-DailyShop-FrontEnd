@@ -12,3 +12,13 @@ export const signIn = createAsyncThunk(
         }
     }
 )
+
+export const editSupplier = createAsyncThunk(
+    'supplier/editSupplier',
+
+)
+
+export const findByAccountId = createAsyncThunk(
+    'supplier/findByAccountId',
+    async (id) => {}
+)

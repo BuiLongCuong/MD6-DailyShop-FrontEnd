@@ -4,9 +4,11 @@ import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import {signIn} from "../../../redux/service/supplierService";
 import "./login_supplier.module.css"
+import {useNavigate} from "react-router-dom";
 
 export default function SignIn() {
     const dispatch = useDispatch();
+    const navigate = useNavigate()
     const supplier = useSelector(({supplier}) => {
         // console.log(supplier.currentSupplier)
         return supplier.currentSupplier
@@ -18,9 +20,33 @@ export default function SignIn() {
             .required("Vui lòng điền vào mục này.")
     })
     const handleSubmit = (values) => {
-        dispatch(signIn(values))
+        dispatch(signIn(values)).then(() => {
+            checkRoleForSupplier();
+            resetForm();
+        })
     };
 
+    const checkRoleForSupplier = () => {
+        const currentSupplier = JSON.parse(localStorage.getItem("currentSupplier"));
+
+        if (currentSupplier && currentSupplier.roles && currentSupplier.roles.length > 0) {
+            const isCustomerOrAdmin = currentSupplier.roles.some(role => role.authority === "ROLE_CUSTOMER" || role.authority === "ROLE_ADMIN");
+            if (isCustomerOrAdmin) {
+                alert("Tài khoản không tồn tại");
+                localStorage.clear();
+
+            } else {
+                console.log("Đăng nhập thành công");
+                if (currentSupplier.checkProfile === false) {
+                    navigate("/addProfileSupplier");
+                } else {
+                    navigate("/dailyShop")
+                }
+            }
+        }else {
+            console.log("Không tìm thấy thông tin người dùng trong localStorage");
+        }
+    }
 
     return (
         <>
@@ -92,6 +118,7 @@ export default function SignIn() {
                                                         Đăng Nhập
                                                     </button>
                                                 </Form>
+
                                             </Formik>
                                         </div>
                                         <div className="forgot">
