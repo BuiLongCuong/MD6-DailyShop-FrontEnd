@@ -10,17 +10,17 @@ export default function BodySideBarSupplier(){
                     </div>
                     <div className="side-bar-above-right">
                         <ul>
-                            <li><Link to={"#"}>Thiết bị điện tử</Link></li>
-                            <li><Link to={"#"}>Phụ kiện điện tử</Link></li>
-                            <li><Link to={"#"}>Sức khỏe và làm đẹp</Link></li>
-                            <li><Link to={"#"}>Thực phẩm tươi</Link></li>
-                            <li><Link to={"#"}>Du lịch</Link></li>
-                            <li><Link to={"#"}>Phụ kiện nữ giới</Link></li>
-                            <li><Link to={"#"}>Phụ kiện trẻ em</Link></li>
-                            <li><Link to={"#"}>Phụ kiện nam giới</Link></li>
-                            <li><Link to={"#"}>Thiết bị điện gia dụng</Link></li>
-                            <li><Link to={"#"}>Thiết bị định vị</Link></li>
-                            <li><Link to={"#"}>Hàng gia dụng</Link></li>
+                            <li><Link to={"#"}>Vận chuyển</Link></li>
+                            <li><Link to={"#"}>Quản lý đơn hàng</Link></li>
+                            <li><Link to={"#"}>Quản lý sản phẩm</Link></li>
+                            {/*<li><Link to={"#"}>Thực phẩm tươi</Link></li>*/}
+                            {/*<li><Link to={"#"}>Du lịch</Link></li>*/}
+                            {/*<li><Link to={"#"}>Phụ kiện nữ giới</Link></li>*/}
+                            {/*<li><Link to={"#"}>Phụ kiện trẻ em</Link></li>*/}
+                            {/*<li><Link to={"#"}>Phụ kiện nam giới</Link></li>*/}
+                            {/*<li><Link to={"#"}>Thiết bị điện gia dụng</Link></li>*/}
+                            {/*<li><Link to={"#"}>Thiết bị định vị</Link></li>*/}
+                            {/*<li><Link to={"#"}>Hàng gia dụng</Link></li>*/}
 
                         </ul>
                     </div>
