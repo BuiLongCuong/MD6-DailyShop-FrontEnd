@@ -1,8 +1,9 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {Link} from "react-router-dom";
-import {Delete, getAll, search} from "../../redux/service/productService.js";
+import {Delete, getAll, getAllProductBySupplier, search} from "../../redux/service/productService.js";
 import {Field, Form, Formik} from "formik";
+
 
 export default function ListProduct(){
     const dispatch = useDispatch();
@@ -12,8 +13,17 @@ export default function ListProduct(){
     useEffect(() => {
         dispatch(getAll());
     }, [])
+    useEffect(() =>{
+        dispatch(getAllProductBySupplier());
+    },[])
     const remove = (id) => {
-        dispatch(Delete(id))
+        let isConfirm = window.confirm("Bạn có đồng ý xóa sản phẩm này không?")
+        if (isConfirm){
+            dispatch(Delete(id)).then(() => {
+                dispatch(getAllProductBySupplier());
+            })
+        }
+
     }
     const searchName = (value) => {
         dispatch(search(value.nameSearch))
@@ -21,7 +31,7 @@ export default function ListProduct(){
 
     return (
         <>
-            <h1>List Product</h1>
+            <h2>Danh Sách Sản Phẩm</h2>
             <h1>Store owner : </h1>
             <Formik initialValues={
                 {
@@ -47,7 +57,7 @@ export default function ListProduct(){
                     <td>StockQuantity</td>
                     <td>Category</td>
                     <td>Photo</td>
-                    <td>Supplier</td>
+
                     <td colSpan={3}>Action</td>
                 </tr>
 
@@ -63,7 +73,7 @@ export default function ListProduct(){
                             <td>{item.stockQuantity}</td>
                             <td>{item.category}</td>
                             <td>{item.photo}</td>
-                            <td>{item.supplierID}</td>
+
 
                             <td>
                                 <Link to={"/products/" + item.productID}>
@@ -77,7 +87,10 @@ export default function ListProduct(){
                                 </button>
                             </td>
                             <td>
-                                <button>View</button>
+                                <Link to={`/products/detail/${item.productID}`}>
+                                    <button>View</button>
+                                </Link>
+
                             </td>
 
                         </tr>

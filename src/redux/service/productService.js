@@ -9,6 +9,21 @@ export const getAll = createAsyncThunk(
     }
 )
 
+export const getAllProductBySupplier = createAsyncThunk(
+    'products/getAllProductBySupplier',
+    async () =>{
+        let res = await axios.get("suppliers/getProductByAccountId/{id}");
+        return res.data();
+    }
+)
+export const getProductById = createAsyncThunk(
+    "products/getProductById",
+    async (idProduct) => {
+        let res = await axios.get(`http://localhost:3001/products/${idProduct}`)
+        return res.data
+    }
+)
+
 export const add = createAsyncThunk(
     'products/add',
     async (newProduct) => {

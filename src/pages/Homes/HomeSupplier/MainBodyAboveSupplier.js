@@ -11,8 +11,8 @@ export default function MainBodyAboveSupplier(){
                                 src="https://afamilycdn.com/2017/samtet-3-1484620559049.jpg"
                                 alt=""/>
                             <Carousel.Caption>
-                                <h3>First slide label</h3>
-                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                {/*<h3>First slide label</h3>*/}
+                                {/*<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>*/}
                             </Carousel.Caption>
                         </Carousel.Item>
                         <Carousel.Item>
@@ -20,8 +20,8 @@ export default function MainBodyAboveSupplier(){
                                 src="https://vuanem.com/blog/wp-content/uploads/2021/12/mua-sam-tet.jpg"
                                 alt=""/>
                             <Carousel.Caption>
-                                <h3>Second slide label</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                {/*<h3>Second slide label</h3>*/}
+                                {/*<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>*/}
                             </Carousel.Caption>
                         </Carousel.Item>
                         <Carousel.Item>
@@ -29,10 +29,10 @@ export default function MainBodyAboveSupplier(){
                                  alt=""/>
 
                             <Carousel.Caption>
-                                <h3>Third slide label</h3>
-                                <p>
-                                    Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                                </p>
+                                {/*<h3>Third slide label</h3>*/}
+                                {/*<p>*/}
+                                {/*    Praesent commodo cursus magna, vel scelerisque nisl consectetur.*/}
+                                {/*</p>*/}
                             </Carousel.Caption>
                         </Carousel.Item>
                     </Carousel>
