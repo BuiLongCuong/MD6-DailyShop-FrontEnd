@@ -11,6 +11,7 @@ import HomePage from "./pages/Homes/HomePage";
 import {Information} from "./components/Login/Customer/Information";
 import HomeSupplier from "./pages/Homes/HomeSupplier/HomeSupplier";
 import ListProduct from "./pages/products/ListProduct";
+import DetailProduct from "./pages/products/DetailProduct";
 
 function App() {
     const currentCustomer = useSelector(({customer}) => {
@@ -40,6 +41,7 @@ function App() {
               <Route path={"dailyShop"} element={<HomeSimple/>}/>
               <Route path={"supplier"} element={<HomeSupplier/>}>
                   <Route path={"products"} element = {<ListProduct/>}/>
+                  <Route path={"products/detail/:id"} element={<DetailProduct/>}/>
               </Route>
               {/*{*/}
               {/*    currentCustomer ? (*/}

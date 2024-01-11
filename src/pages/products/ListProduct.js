@@ -71,8 +71,8 @@ export default function ListProduct(){
                             <td>{item.description}</td>
                             <td>{item.price}</td>
                             <td>{item.stockQuantity}</td>
-                            <td>{item.category}</td>
-                            <td>{item.photo}</td>
+                            <td>{item.category.name}</td>
+                            <td>{item.photo.photoName}</td>
 
 
                             <td>
