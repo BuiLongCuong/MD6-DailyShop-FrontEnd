@@ -6,7 +6,6 @@ export const getAllByIdUser = createAsyncThunk(
     'products/getAllByIdUser',
     async (id) => {
         let res = await getAxios().get("/suppliers/getProductByAccountId/" + id)
-        console.log(id)
         return res.data
     }
 )
@@ -29,10 +28,11 @@ export const updateForm = createAsyncThunk(
     }
 )
 
-export const Update = createAsyncThunk(
+export const UpdateService = createAsyncThunk(
     'products/edit',
     async (productEdit) => {
-        let res = await getAxios().put("/editProduct/" + productEdit.id, productEdit)
+        console.log(productEdit)
+        let res = await getAxios().put("/suppliers/editProduct/" + productEdit.productID, productEdit)
         return res.data
     }
 )

@@ -1,26 +1,63 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getAllByIdUser} from "../../redux/service/productService";
-import {getAllCategories} from "../../redux/service/categoryService";
+import {Link} from "react-router-dom";
+
 
 export function ListProduct() {
-    const distPatch = useDispatch()
-    const accountSupplier = JSON.parse(localStorage.getItem("currentCustomer"))
-    console.log(accountSupplier)
-    const accountId = accountSupplier.id;
-    const listProduct = useSelector(({categories}) => {
-        console.log(categories.list)
-        return categories
+    const currentCustomer = JSON.parse(localStorage.getItem("currentCustomer"))
+    const dispatch = useDispatch();
+    const listProducts = useSelector(({products}) => {
+        console.log(products.list)
+        return products.list
     })
-
     useEffect(() => {
-        distPatch(getAllCategories())
+        dispatch(getAllByIdUser(currentCustomer.id))
     }, []);
     return (
         <>
-            <div>
-                Abc
-            </div>
+            <table border={1}>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>StockQuantity</th>
+                    <th>Category</th>
+                    <th>Ảnh</th>
+                    <th>Action</th>
+                </tr>
+                {
+                    listProducts.map((products) =>
+                        (
+                            <>
+                                <tr>
+                                    <td>{products.productID}</td>
+                                    <td>{products.productName}</td>
+                                    <td>{products.description}</td>
+                                    <td>{products.price}</td>
+                                    <td>{products.stockQuantity}</td>
+                                    <td>{products.category.name}</td>
+                                    <td>
+                                        {
+                                            products.photo.map((photo) => (
+                                                <>
+                                                    <img src={photo.photoName} alt="" style={{width: "100px"}}/>
+                                                </>
+                                            ))
+                                        }
+                                    </td>
+                                    <td>
+                                        <Link to={"/edit/" + products.productID}>
+                                            <button>Sửa</button>
+                                        </Link>
+                                    </td>
+                                    <td>Xóa</td>
+                                </tr>
+                            </>
+                        ))
+                }
+            </table>
         </>
     )
 }

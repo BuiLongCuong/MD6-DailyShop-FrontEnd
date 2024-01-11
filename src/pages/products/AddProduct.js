@@ -8,7 +8,7 @@ import {storage} from "../../firebase/firebase";
 import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
 import {v4} from "uuid";
 function AddProduct() {
-    const accountSupplier = JSON.parse(localStorage.getItem("currentSupplier"))
+    const accountSupplier = JSON.parse(localStorage.getItem("currentCustomer"))
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [photo, setPhoto] = useState([]);
@@ -49,7 +49,7 @@ function AddProduct() {
                 price: '',
                 stockQuantity: '',
                 category: {
-                    id: 1
+                    id: ""
                 },
                 account: {
                     id: accountSupplier.id

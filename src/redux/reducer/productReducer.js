@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {add, Delete, getAllByIdUser, search, Update, updateForm} from "../service/productService.js";
+import {add, Delete, getAllByIdUser, search, Update, updateForm, UpdateService} from "../service/productService.js";
 
 const initialState = {
     list: [],
@@ -22,9 +22,9 @@ const productSlice = createSlice({
         builder.addCase(updateForm.fulfilled, (state, {payload}) => {
             state.productEdit = payload
         })
-        builder.addCase(Update.fulfilled,(state,{payload})=>{
+        builder.addCase(UpdateService.fulfilled,(state,{payload})=>{
             for (let i = 0; i < state.list.length; i++) {
-                if (state.list[i].id===payload.id){
+                if (state.list[i].productID===payload.productID){
                     state.list[i] = payload
                 }
             }

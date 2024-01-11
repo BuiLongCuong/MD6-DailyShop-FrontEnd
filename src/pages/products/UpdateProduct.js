@@ -1,44 +1,73 @@
+import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {Field, Form, Formik} from "formik";
-import {useParams} from "react-router-dom";
-import {useEffect} from "react";
-import {updateForm} from "../../redux/service/productService";
+import {useEffect, useState} from "react";
 import {getAllCategories} from "../../redux/service/categoryService";
+import {updateForm, UpdateService} from "../../redux/service/productService";
+import {storage} from "../../firebase/firebase";
+import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
+import {v4} from "uuid";
 
-export default function UpdateProduct() {
-    const dispatch = useDispatch();
+export function UpdateProduct() {
+    const navigate = useNavigate()
     const {id} = useParams()
-    const category = useSelector(({categories}) => {
+    const dispatch = useDispatch()
+    const [photoUpload, setPhotoUpload] = useState([])
+    const categories = useSelector(({categories}) => {
         return categories.list
     })
     const product = useSelector(({products}) => {
-        return products.productEdit;
+        return products.productEdit
     })
-    const listPhoto = product.photo;
-    useEffect(async () => {
-        await dispatch(updateForm(id))
+
+    useEffect(() => {
         dispatch(getAllCategories())
-    }, [])
+        dispatch(updateForm(id))
+    }, []);
+
+    const Update = (values) => {
+        let productEdit = {...values}
+        if (photoUpload.length !== 0) {
+            productEdit.photo = photoUpload
+            dispatch(UpdateService(productEdit))
+            navigate("/list")
+        }
+    }
+    const handleChange = (e) => {
+        const files = e.target.files
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const photoRef = ref(storage, `image/${file.name}`)
+            uploadBytes(photoRef, file).then((snapshot) => {
+                getDownloadURL(snapshot.ref).then((url) => {
+                    setPhotoUpload((prev) => [...prev, {photoName: url}]);
+                });
+            });
+        }
+    }
+
     return (
         <>
-            <Formik initialValues={{product}} onSubmit={}>
+            <Formik initialValues={product
+            } onSubmit={Update}
+                    enableReinitialize={true}>
                 <Form>
                     <Field name={"productName"}></Field>
                     <Field name={"description"}></Field>
                     <Field name={"price"}></Field>
                     <Field name={"stockQuantity"}></Field>
-                    <Field as={"select"} name={"category.id"}>
+                    <Field name={"category.id"} as={"select"}>
                         {
-                            category.map(category => (
-                                <>
+                            categories.map((category) => {
+                                return <>
                                     <option value={category.id}>{category.name}</option>
                                 </>
-                            ))
+                            })
                         }
                     </Field>
-                    <Field name={"photo.photoName"}></Field>
+                    <Field name={"photo.photoName"} type={"file"} multiple onChange={handleChange}/>
                     {
-                        product && listPhoto.map(photo => {
+                        product.photo && product.photo.map((photo) => {
                             return (
                                 <>
                                     <img src={photo.photoName} alt=""/>
@@ -46,8 +75,15 @@ export default function UpdateProduct() {
                             )
                         })
                     }
-
+                    {
+                        photoUpload.map(p => (
+                            <>
+                                <img src={p.photoName} alt=""/></>
+                        ))
+                    }
+                    <button>Sửa</button>
                 </Form>
+
             </Formik>
         </>
     )

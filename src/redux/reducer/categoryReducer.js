@@ -9,7 +9,7 @@ const categorySlice = createSlice({
     initialState,
     extraReducers : builder => {
         builder.addCase(getAllCategories.fulfilled,(state,{payload}) =>{
-            console.log(payload)
+            // console.log(payload)
             state.list = payload
         })
     }

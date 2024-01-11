@@ -11,6 +11,7 @@ import HomePage from "./pages/Homes/HomePage";
 import {Information} from "./components/Login/Customer/Information";
 import AddProduct from "./pages/products/AddProduct";
 import {ListProduct} from "./pages/products/ListProduct";
+import {UpdateProduct} from "./pages/products/UpdateProduct";
 
 function App() {
     const currentCustomer = useSelector(({customer}) => {
@@ -37,6 +38,7 @@ function App() {
               <Route path={"information"} element={<Information/>}/>
               <Route path={"add"} element={<AddProduct/>}></Route>
               <Route path={"list"} element={<ListProduct/>}></Route>
+              <Route path={"/edit/:id"} element={<UpdateProduct/>}></Route>
               {/*{*/}
               {/*    currentCustomer ? (*/}
               {/*        <>*/}
