@@ -1,7 +1,7 @@
 import "./BodySupplier.css"
-import BodyAdsSupplier from "./BodyAdsSupplier";
-import BodySideBarSupplier from "./BodySideBarSupplier";
-import MainBodySupplier from "./MainBodySupplier";
+import BodyAdsSupplier from "../BodyAdsSupplier/BodyAdsSupplier";
+import BodySideBarSupplier from "../BodySideBarSupplier/BodySideBarSupplier";
+import MainBodySupplier from "../MainBodySupplier/MainBodySupplier";
 export default function BodySupplier(){
     return(
         <>
