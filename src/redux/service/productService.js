@@ -15,7 +15,6 @@ export const add = createAsyncThunk(
         console.log(newProduct)
         let res = await getAxios().post("/suppliers/createProduct", newProduct)
         return res.data
-
     }
 )
 

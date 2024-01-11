@@ -26,57 +26,83 @@ export function Information() {
                     <div className="contentInfo">
                         <Formik initialValues={
                             {
-                                customerName : '',
-                                address : '',
-                                phone : '',
-                                dateOfBirth : ''
+                                customerName: '',
+                                address: '',
+                                phone: '',
+                                dateOfBirth: ''
                             }
                         } onSubmit={(values) => {
                             console.log(values)
                         }}>
                             <Form>
-                        <div className="infoDetails">
-                            <div className="infoName">
-                                <div className="noteName">
-                                    <p>Tên</p>
+                                <div className="infoDetails">
+                                    <div className="infoName">
+                                        <div className="noteName">
+                                            <p>Tên:</p>
+                                        </div>
+                                        <div className="name">
+                                            <Field type="text" name="customerName" placeholder={"Nhập họ và tên"}/>
+                                        </div>
+                                    </div>
+                                    <div className="addressDetail">
+                                        <div className="select1">
+                                            <select name="" id="">
+                                                <option value="">Hà Nội</option>
+                                                <option value="">HCM</option>
+                                                <option value="">Đà Nẵng</option>
+                                            </select>
+                                        </div>
+                                        <div className="select2">
+                                            <select name="" id="">
+                                                <option value="">Đông Anh</option>
+                                                <option value="">Quận 12</option>
+                                                <option value="">ABC</option>
+                                            </select>
+                                        </div>
+                                        <div className="select3">
+                                            <select name="" id="">
+                                                <option value="">ABC</option>
+                                                <option value="">ABC</option>
+                                                <option value="">ABC</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className="infoAddress">
+                                        <div className="noteAddress">
+                                            <p>Địa chỉ:</p>
+                                        </div>
+                                        <div className="address">
+                                            <Field type="text" name="address" placeholder={"Địa chỉ chi tiết"}/>
+                                        </div>
+                                    </div>
+                                    <div className="infoPhone">
+                                        <div className="notePhone">
+                                            <p>Số điện thoại:</p>
+                                        </div>
+                                        <div className="phone">
+                                            <Field type="text" name="phone" placeholder={"Nhập số điện thoại"}/>
+                                        </div>
+                                    </div>
+                                    <div className="infoBirthday">
+                                        <div className="noteBirthday">
+                                            <p>Ngày sinh:</p>
+                                        </div>
+                                        <div class="birthday">
+                                            <Field type="date" name="dateOfBirth"/>
+                                        </div>
+                                    </div>
+                                    <div class="decision">
+                                        <div class="cancel">
+                                            <button type={"submit"}>Hủy</button>
+                                        </div>
+                                        <div class="save">
+                                            <button type={"submit"}>Lưu</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="name">
-                                    <Field type="text" name="customerName"/>
+                                <div className="imageCustomer">
+                                    avatar
                                 </div>
-                            </div>
-                            <div className="infoAddress">
-                                <div className="noteAddress">
-                                    <p>Địa chỉ</p>
-                                </div>
-                                <div className="address">
-                                    <Field type="text" name="address"/>
-                                </div>
-                            </div>
-                            <div className="infoPhone">
-                                <div className="notePhone">
-                                    <p>Số điện thoại</p>
-                                </div>
-                                <div className="phone">
-                                    <Field type="text" name="phone"/>
-                                </div>
-                            </div>
-                            <div className="infoBirthday">
-                                <div className="noteBirthday">
-                                    <p>Ngày sinh</p>
-                                </div>
-                                <div class="birthday">
-                                    <Field type="date" name="dateOfBirth"/>
-                                </div>
-                            </div>
-                            <div class="decision">
-                                <div class="cancel">
-                                    <button type={"submit"}>Hủy</button>
-                                </div>
-                                <div class="save">
-                                    <button type={"submit"}>Lưu</button>
-                                </div>
-                            </div>
-                        </div>
                             </Form>
                         </Formik>
                     </div>

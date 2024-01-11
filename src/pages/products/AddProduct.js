@@ -7,6 +7,8 @@ import {getAllCategories} from "../../redux/service/categoryService";
 import {storage} from "../../firebase/firebase";
 import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
 import {v4} from "uuid";
+import * as React from "react";
+
 function AddProduct() {
     const accountSupplier = JSON.parse(localStorage.getItem("currentSupplier"))
     const dispatch = useDispatch();
@@ -23,8 +25,8 @@ function AddProduct() {
     const Create = (value) => {
         value.photo = photo;
         try {
-        dispatch(add(value)).unwarp()
-        }catch (e){
+            dispatch(add(value)).unwarp()
+        } catch (e) {
         }
     }
     const handleChange = (e) => {
@@ -34,7 +36,7 @@ function AddProduct() {
             const photoRef = ref(storage, `image/${file.name + v4()}`);
             uploadBytes(photoRef, file).then((snapshot) => {
                 getDownloadURL(snapshot.ref).then((url) => {
-                    setPhoto((prev) => [...prev,{photoName: url} ]);
+                    setPhoto((prev) => [...prev, {photoName: url}]);
                 });
             });
         }
@@ -89,13 +91,105 @@ function AddProduct() {
             {/*</Formik>*/}
 
             <div className="mainAddPr">
+                <div className="headerAddPr">
+                    <div className="headerDetailAddPr">
+                        <div className="leftHeader">
+                            <div className="logoHeader">
+                                <img src="img_2.png"
+                                     alt=""/>
+                            </div>
+                            <div className="titleAdd">
+                                <p>Thêm mới sản phẩm</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div className="frame">
-                    <div className="image">
+                    <Formik initialValues={
+                        {
+                            productName: '',
+                            description: '',
+                            price: '',
+                            stockQuantity: '',
+                            category: {
+                                id: 1
+                            },
+                            account: {
+                                id: accountSupplier.id
+                            }
 
-                    </div>
-                    <div className="infoProduct">
-
-                    </div>
+                        }
+                    } onSubmit={Create}
+                    >
+                        <Form>
+                            <div className="image">
+                                <Field name={"photo.photoName"} type={"file"} multiple onChange={handleChange}
+                                       placeholder={" Enter Photo"}/>
+                                {
+                                    photo.map(p => (
+                                        <>
+                                            <img src={p.photoName} alt="" style={{width: "150px", height: "150px"}}/>
+                                        </>
+                                    ))
+                                }
+                            </div>
+                            <div className="infoProduct">
+                                <div className="contentProduct">
+                                    <div className="nameProduct">
+                                        <div className="label1">
+                                            Nhập tên :
+                                        </div>
+                                        <div className="nameDetail">
+                                            <Field name={"productName"} placeholder={"Enter ProductName"}/>
+                                        </div>
+                                    </div>
+                                    <div className="descriptionProduct">
+                                        <div className="label2">
+                                            Mô tả :
+                                        </div>
+                                        <div className="descriptionDetail">
+                                            <Field as="textarea" cols={39} rows={4} name={"description"}
+                                                   placeholder={"Enter Description"}/>
+                                        </div>
+                                    </div>
+                                    <div className="priceProduct">
+                                        <div className="label3">
+                                            Giá (VNĐ) :
+                                        </div>
+                                        <div className="priceDetail">
+                                            <Field name={"price"} type={"number"} placeholder={" Enter Price"}/>
+                                        </div>
+                                    </div>
+                                    <div className="quantityProduct">
+                                        <div className="label4">
+                                            Số lượng :
+                                        </div>
+                                        <div className="quantityDetail">
+                                            <Field name={"stockQuantity"} type={"number"}
+                                                   placeholder={" Enter StockQuantity"}/>
+                                        </div>
+                                    </div>
+                                    <div className="categoryProduct">
+                                        <div className="label5">
+                                            Loại sản phẩm :
+                                        </div>
+                                        <Field name={"category.id"} as={"select"}>
+                                            {
+                                                categories.map((category) => {
+                                                    return <>
+                                                        <option value={category.id}>{category.name}</option>
+                                                    </>
+                                                })
+                                            }
+                                        </Field>
+                                    </div>
+                                    <div className="addProduct">
+                                        <button type={"submit"}>Thêm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </Form>
+                    </Formik>
                 </div>
             </div>
 
