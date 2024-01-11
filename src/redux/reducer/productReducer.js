@@ -3,7 +3,7 @@ import {
     add,
     Delete,
     getAll,
-    getAllProductBySupplier,
+    getAllByIdUser,
     getProductById,
     search,
     Update,
@@ -25,7 +25,7 @@ const productSlice = createSlice({
         builder.addCase(getAll.fulfilled, (state, {payload}) => {
             state.list = payload;
         })
-        builder.addCase(getAllProductBySupplier.fulfilled,(state,{payload}) =>{
+        builder.addCase(getAllByIdUser.fulfilled,(state,{payload}) =>{
             state.list = payload;
         })
         builder.addCase(getProductById.fulfilled,(state,{payload}) =>{

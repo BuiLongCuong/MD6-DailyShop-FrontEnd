@@ -9,7 +9,7 @@ export const getAll = createAsyncThunk(
     }
 )
 
-export const getAllProductBySupplier = createAsyncThunk(
+export const getAllByIdUser = createAsyncThunk(
     'products/getAllProductBySupplier',
     async () =>{
         let res = await axios.get("suppliers/getProductByAccountId/{id}");

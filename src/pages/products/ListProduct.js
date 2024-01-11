@@ -6,15 +6,17 @@ import {Field, Form, Formik} from "formik";
 
 
 export default function ListProduct(){
+    const currentCustomer = JSON.parse(localStorage.getItem("currentCustomer"))
     const dispatch = useDispatch();
-    const products = useSelector(({products}) => {
+    const listProducts = useSelector(({products}) => {
+        console.log(products.list)
         return products.list;
     });
     useEffect(() => {
         dispatch(getAll());
     }, [])
     useEffect(() =>{
-        dispatch(getAllProductBySupplier());
+        dispatch(getAllByIdUserr());
     },[])
     const remove = (id) => {
         let isConfirm = window.confirm("Bạn có đồng ý xóa sản phẩm này không?")
