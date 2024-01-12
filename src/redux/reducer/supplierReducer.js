@@ -24,7 +24,8 @@ const userSlice = createSlice({
             state.currentSupplier = payload;
         })
         builder.addCase(editSupplier.fulfilled, (state, action) => {
-            state.list[state.list.indexOf(action.payload)] = action.payload;
+            // state.list[state.list.indexOf(action.payload)] = action.payload;
+            console.log(action.payload.data)
         })
         builder.addCase(findByAccountId.fulfilled, (state, {payload}) => {
             state.supplier = payload.data;

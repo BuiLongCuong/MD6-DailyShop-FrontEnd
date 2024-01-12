@@ -8,6 +8,7 @@ export default function AddInforFirstLogin() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+
     const supplier =useSelector(state => state.supplier.supplier)
 
     // const {id} =useParams();
@@ -17,8 +18,9 @@ export default function AddInforFirstLogin() {
         dispatch(findByAccountId(currentSupplier.id))
     }, [])
 
-    const EditSupplier = (value) => {
-        dispatch(editSupplier(value)).then(() => {
+    const EditSupplier = (values) => {
+        dispatch(editSupplier(values)).then(() => {
+            console.log(values)
             navigate("/dailyShop")
         })
     }
@@ -29,7 +31,15 @@ export default function AddInforFirstLogin() {
                 <div className="offset-3 col-6">
                     <h1 style={{textAlign: "center"}}>Edit supplier</h1>
 
-                    <Formik initialValues={supplier} onSubmit={EditSupplier} enableReinitialize={true}>
+                    <Formik initialValues={
+                        // {
+                        // supplierName : '',
+                        // contactName : '',
+                        // phone: '',
+                        // address: ''
+                            // }
+                        {supplier}
+                        } onSubmit={EditSupplier} enableReinitialize={true}>
                         <Form>
                             <div className="form-group">
                                 <label>Supplier name</label>
@@ -45,7 +55,26 @@ export default function AddInforFirstLogin() {
                             </div>
                             <div className="form-group">
                                 <label>Address</label>
+                                <Field as={"select"} name="province">
+                                    <option value="1">Ha Noi</option>
+                                    <option value="2">Nam Dinh</option>
+                                    <option value="3">Hai Phong</option>
+                                </Field>
+                                <Field as={"select"} name="district">
+                                    <option value="1">Ha Noi</option>
+                                    <option value="2">Nam Dinh</option>
+                                    <option value="3">Hai Phong</option>
+                                </Field>
+                                <Field as={"select"} name="ward">
+                                    <option value="1">Ha Noi</option>
+                                    <option value="2">Nam Dinh</option>
+                                    <option value="3">Hai Phong</option>
+                                </Field>
                                 <Field className={"form-control"} name={"address"}></Field>
+                            </div>
+                            <div className="form-group">
+                                <label>Avatar</label>
+                                <Field as={"file"} className={"form-control"} name={"imageSupplier"}></Field>
                             </div>
 
                             <button type="submit" className="btn btn-primary ml-3">Save</button>
