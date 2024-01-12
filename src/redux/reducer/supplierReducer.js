@@ -3,17 +3,12 @@ import {editSupplier, findByAccountId, signIn} from "../service/supplierService"
 
 const initialState = {
     currentSupplier:JSON.parse(localStorage.getItem("currentSupplier")),
-    list: [],
-    supplier: {
-        supplierName : '',
-        contactName : '',
-        phone: '',
-        address: '',
-        province: '',
-        district: '',
-        ward: '',
-        imageSupplier: '',
+    supplierInfoDetail: {
+
     },
+    supplierSignInFirst: {
+
+    }
 }
 const userSlice = createSlice({
     name: "supplier/signIn",
@@ -24,11 +19,12 @@ const userSlice = createSlice({
             state.currentSupplier = payload;
         })
         builder.addCase(editSupplier.fulfilled, (state, action) => {
-            // state.list[state.list.indexOf(action.payload)] = action.payload;
-            console.log(action.payload.data)
+            state.supplierInfoDetail = action.payload.data
+            state.supplierInfoDetail = state.supplierSignInFirst
+
         })
         builder.addCase(findByAccountId.fulfilled, (state, {payload}) => {
-            state.supplier = payload.data;
+            state.supplierSignInFirst = payload.data;
         })
     }
 })
