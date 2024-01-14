@@ -1,4 +1,4 @@
-import axios, {get} from "axios";
+import axios from "axios";
 
 export function getAxios() {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));

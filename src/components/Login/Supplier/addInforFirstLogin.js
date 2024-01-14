@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {editSupplier, findByAccountId} from "../../../redux/service/supplierService";
 import {Field, Form, Formik} from "formik";
 import {getAllDistrict, getAllProvince, getAllWard} from "../../../redux/service/addressService";
@@ -18,9 +18,16 @@ export default function AddInforFirstLogin() {
 
     const currentSupplier = JSON.parse(localStorage.getItem("currentSupplier"));
 
+
+    useEffect(() => {
+        dispatch(findByAccountId(currentSupplier.id))
+    })
+
     useEffect(() => {
         dispatch(getAllProvince())
     }, [])
+
+
 
     // useEffect(() => {
     //     dispatch(getAllDistrict())
@@ -30,9 +37,7 @@ export default function AddInforFirstLogin() {
     //     dispatch(getAllWard())
     // }, [])
 
-    useEffect(() => {
-        dispatch(findByAccountId(currentSupplier.id))
-    }, [])
+
 
    const getDistricts =(event)=>{
         console.log(event.target.value)
@@ -45,9 +50,9 @@ export default function AddInforFirstLogin() {
     }
 
     const EditSupplier = (values) => {
+        console.log(values)
         values.account = currentSupplier
         dispatch(editSupplier(values)).then(() => {
-
             navigate("/dailyShop")
         })
     }
@@ -74,33 +79,37 @@ export default function AddInforFirstLogin() {
                             </div>
                             <div className="form-group">
                                 <label>Address</label>
-                                <Field name={"province"} as={"select"} onChange={(event)=>{
-                                    getDistricts(event)
-                                }} >
+                                <Field name={"province.id"} as={"select"}
+                                       onChange={(event)=>{getDistricts(event)}}
+                                >
+                                    <option value="">--Chọn Tỉnh/Thành phố--</option>
                                     {
                                         provinces.map((province) => {
                                             return <>
+
                                                 <option value={province.id}>{province.provinceName}</option>
                                             </>
                                         })
                                     }
                                 </Field>
-                                <Field as={"select"} name={"district"} onChange={(event)=>{
-                                    getWards(event)
-                                }}>
+                                <Field as={"select"} name={"district.id"}
+                                       onChange={(event)=>{getWards(event)}}
+                                >
+                                    <option value="">--Chọn Quận/Huyện--</option>
                                     {
-                                        districts.map((province) => {
+                                        districts.map((district) => {
                                             return <>
-                                                <option value={province.id}>{province.districtName}</option>
+                                                <option value={district.id}>{district.districtName}</option>
                                             </>
                                         })
                                     }
                                 </Field>
-                                <Field as={"select"} name={"ward"}>
+                                <Field as={"select"} name={"ward.id"}>
+                                    <option value="">--Chọn Phường/Xã--</option>
                                     {
-                                        wards.map((province) => {
+                                        wards.map((ward) => {
                                             return <>
-                                                <option value={province.id}>{province.wardName}</option>
+                                                <option value={ward.id}>{ward.wardName}</option>
                                             </>
                                         })
                                     }
